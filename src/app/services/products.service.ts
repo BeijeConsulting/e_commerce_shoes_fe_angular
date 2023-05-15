@@ -6,8 +6,9 @@ import { catchError } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class AuthServicesService {
-  private url = "http://localhost:3000/api/auth";
+export class ProductsService {
+  private url =
+    "http://shoesshop.eu-south-1.elasticbeanstalk.com/products/page=1/perPage=10/it";
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -26,9 +27,9 @@ export class AuthServicesService {
     };
   }
 
-  login(credentials: any): Observable<any> {
+  getProducts(): Observable<any> {
     return this.http
-      .post(this.url + "/login", credentials, this.httpOptions)
-      .pipe(catchError(this.handleError<any>("login")));
+      .get(this.url, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
   }
 }
