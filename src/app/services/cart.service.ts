@@ -7,9 +7,18 @@ import { PROPERTIES } from "src/assets/utils/properties";
 @Injectable({
   providedIn: "root",
 })
-export class ProductsService {
+export class CartService {
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  };
+
+  authHttpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer " +
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDIyOTMzMSwiZXhwIjoxNjg0MjMyOTMxfQ.BNYMuFecHi0R1c0qVj8R0oqp-2aXPfJLhucsgVyHjiU",
+    }),
   };
   constructor(private http: HttpClient) {}
 
@@ -26,74 +35,55 @@ export class ProductsService {
     };
   }
 
-  getProducts(
-    page?: number,
-    lang?: string,
-    filter?: string,
-    perPage = 12
-  ): Observable<any> {
+  getCartList(): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + "/shoppingcart", this.authHttpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getCartListDetail(detailsId?: number, SECRET?: string): Observable<any> {
     return this.http
       .get(
-        PROPERTIES.BASE_URL + "/products/page=1/perPage=10/it",
+        PROPERTIES.BASE_URL + `"/shoppingcart" + ${detailsId}, ${SECRET}`,
         this.httpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
-  getNewProducts(
-    page?: number,
-    lang?: string,
-    filter?: string,
-    perPage = 12
-  ): Observable<any> {
+  addItemToCartList(item?: object): Observable<any> {
     return this.http
-      .get(
-        PROPERTIES.BASE_URL + "/products/new/page=1/perPage=10/it",
-        this.httpOptions
+      .post(
+        PROPERTIES.BASE_URL + `/shoppingcart/add", ${item}`,
+        this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
-  getSearchProduct(
-    page?: number,
-    lang?: string,
-    term?: string,
-    perPage = 12
-  ): Observable<any> {
+  addListItemToCartList(items?: object): Observable<any> {
     return this.http
-      .get(
+      .post(
+        PROPERTIES.BASE_URL + `/shoppingcart/additemsList", ${items}`,
+        this.authHttpOptions
+      )
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  updateItemToCartList(itemId?: number, newQuantity?: number): Observable<any> {
+    return this.http
+      .put(
         PROPERTIES.BASE_URL +
-          `/products/search/page=10/perPage=${perPage}/it?q=${term}`,
-        this.httpOptions
+          `/shoppingcart/update/" + ${itemId} + "?new_quantity=" + ${newQuantity}`,
+        this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
-  getProduct(id?: number, lang?: string): Observable<any> {
+  deleteCartItem(id?: number): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + `/products/115/it`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>("getProducts")));
-  }
-
-  getBrands(): Observable<any> {
-    return this.http
-      .get(PROPERTIES.BASE_URL + `/brands`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>("getProducts")));
-  }
-
-  getCategories(lang?: string): Observable<any> {
-    return this.http
-      .get(PROPERTIES.BASE_URL + `/categories/${lang}`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>("getProducts")));
-  }
-  getColors(lang?: string): Observable<any> {
-    return this.http
-      .get(PROPERTIES.BASE_URL + `/colors/${lang}`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>("getProducts")));
-  }
-  getSizes(): Observable<any> {
-    return this.http
-      .get(PROPERTIES.BASE_URL + `/sizes`, this.httpOptions)
+      .delete(
+        PROPERTIES.BASE_URL + `/shoppingcart/delete", ${id}`,
+        this.authHttpOptions
+      )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 }
