@@ -9,23 +9,23 @@
 // })
 // export class AppRoutingModule { }
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 // import { DashboardComponent } from './dashboard/dashboard.component';
 // import { ContactsComponent } from './contacts/contacts.component';
 // import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 // import { ContactDetailResolver } from './resolver/contact-detail.resolver'
-import { HomeComponent } from './screens/home/home.component';
-import { IdentityComponent } from './screens/identity/identity.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { HomeComponent } from "./screens/home/home.component";
+import { IdentityComponent } from "./screens/identity/identity.component";
+import { LoginFormComponent } from "./components/login-form/login-form.component";
+import { SignupFormComponent } from "./components/signup-form/signup-form.component";
 
 const routes: Routes = [
- { path: '', redirectTo: '/language', pathMatch: 'full' },
+  //  { path: '', redirectTo: '/language', pathMatch: 'full' },
   // {
   //   path: ':lang', component: CmsComponent,
   //   children: [
-       { path: '', component: HomeComponent },
+  { path: "", component: HomeComponent },
   //     {
   //       path: 'area-personale', component: UserInfoComponent,
   //       children: [
@@ -64,17 +64,18 @@ const routes: Routes = [
   //   ]
   // },
   // { path: ':lang/checkout', component: CheckoutComponent },
-   {
-     path: ':lang/accedi', component: IdentityComponent,
+  {
+    path: ":lang/accedi",
+    component: IdentityComponent,
     children: [
-       { path: '', component: LoginFormComponent },
-       { path: 'registrati', component: SignupFormComponent },
-     ]
-   },
+      { path: "", component: LoginFormComponent },
+      { path: "registrati", component: SignupFormComponent },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
