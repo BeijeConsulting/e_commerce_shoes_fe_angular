@@ -11,9 +11,42 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const products = this.productsService.getProducts();
     products.subscribe((data) => {
-      console.log("data", data);
+      console.log("PRODUCTS", data);
     });
 
-    console.log("HomeComponent.ngOnInit");
+    const newProducts = this.productsService.getNewProducts();
+    newProducts.subscribe((data) => {
+      console.log("NEWPRODUCTS", data);
+    });
+
+    const searchedProduct = this.productsService.getSearchProduct();
+    searchedProduct.subscribe((data) => {
+      console.log("SEARCHEDPRODUCT", data);
+    });
+
+    const productById = this.productsService.getProduct();
+    productById.subscribe((data) => {
+      console.log("PRODUCT BY ID", data);
+    });
+
+    const brands = this.productsService.getBrands();
+    brands.subscribe((data) => {
+      console.log("BRANDS", data);
+    });
+
+    const categories = this.productsService.getCategories();
+    categories.subscribe((data) => {
+      console.log("CATEGORIES", data);
+    });
+
+    const colors = this.productsService.getColors();
+    colors.subscribe((data) => {
+      console.log("COLORS", data);
+    });
+
+    const sizes = this.productsService.getSizes();
+    sizes.subscribe((data) => {
+      console.log("SIZES", data);
+    });
   }
 }

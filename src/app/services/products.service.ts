@@ -2,13 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { PROPERTIES } from "src/assets/utils/properties";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProductsService {
-  private url =
-    "http://shoesshop.eu-south-1.elasticbeanstalk.com/products/page=1/perPage=10/it";
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -27,9 +26,74 @@ export class ProductsService {
     };
   }
 
-  getProducts(): Observable<any> {
+  getProducts(
+    page?: number,
+    lang?: string,
+    filter?: string,
+    perPage = 12
+  ): Observable<any> {
     return this.http
-      .get(this.url, this.httpOptions)
+      .get(
+        PROPERTIES.BASE_URL + "/products/page=1/perPage=10/it",
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getNewProducts(
+    page?: number,
+    lang?: string,
+    filter?: string,
+    perPage = 12
+  ): Observable<any> {
+    return this.http
+      .get(
+        PROPERTIES.BASE_URL + "/products/new/page=1/perPage=10/it",
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getSearchProduct(
+    page?: number,
+    lang?: string,
+    term?: string,
+    perPage = 12
+  ): Observable<any> {
+    return this.http
+      .get(
+        PROPERTIES.BASE_URL +
+          `/products/search/page=10/perPage=${perPage}/it?q=${term}`,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getProduct(id?: number, lang?: string): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/products/115/it`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getBrands(): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/brands`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
+  getCategories(lang?: string): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/categories/${lang}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+  getColors(lang?: string): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/colors/${lang}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+  getSizes(): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/sizes`, this.httpOptions)
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 }
