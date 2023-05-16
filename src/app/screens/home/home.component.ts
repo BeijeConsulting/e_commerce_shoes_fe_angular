@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       console.log("CARTLIST", data);
     });
 
-    const cartListDetail = this.cartService.getCartListDetail();
+    const cartListDetail = this.cartService.getCartListDetail(1);
     cartListDetail.subscribe((data) => {
       console.log("CARTLIST DETAILS", data);
     });

@@ -41,11 +41,11 @@ export class CartService {
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
-  getCartListDetail(detailsId?: number, SECRET?: string): Observable<any> {
+  getCartListDetail(detailsId?: number): Observable<any> {
     return this.http
       .get(
-        PROPERTIES.BASE_URL + `"/shoppingcart" + ${detailsId}, ${SECRET}`,
-        this.httpOptions
+        PROPERTIES.BASE_URL + `/shoppingcart/${detailsId}`,
+        this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
@@ -53,7 +53,7 @@ export class CartService {
   addItemToCartList(item?: object): Observable<any> {
     return this.http
       .post(
-        PROPERTIES.BASE_URL + `/shoppingcart/add", ${item}`,
+        PROPERTIES.BASE_URL + `/shoppingcart/add, ${item}`,
         this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
@@ -62,7 +62,7 @@ export class CartService {
   addListItemToCartList(items?: object): Observable<any> {
     return this.http
       .post(
-        PROPERTIES.BASE_URL + `/shoppingcart/additemsList", ${items}`,
+        PROPERTIES.BASE_URL + `/shoppingcart/additemsList, ${items}`,
         this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
@@ -72,7 +72,7 @@ export class CartService {
     return this.http
       .put(
         PROPERTIES.BASE_URL +
-          `/shoppingcart/update/" + ${itemId} + "?new_quantity=" + ${newQuantity}`,
+          `/shoppingcart/update/ + ${itemId} + ?new_quantity= + ${newQuantity}`,
         this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
@@ -81,7 +81,7 @@ export class CartService {
   deleteCartItem(id?: number): Observable<any> {
     return this.http
       .delete(
-        PROPERTIES.BASE_URL + `/shoppingcart/delete", ${id}`,
+        PROPERTIES.BASE_URL + `/shoppingcart/delete, ${id}`,
         this.authHttpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
