@@ -2,13 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { PROPERTIES } from "src/assets/utils/properties";
 
 @Injectable({
   providedIn: "root",
 })
 export class AddressesService {
-  private url = "https://shoes-api.beije.it";
-
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -39,31 +38,39 @@ export class AddressesService {
 
   getAddressList(): Observable<any> {
     return this.http
-      .get(this.url + "/user/addresses", this.authHttpOptions)
+      .get(PROPERTIES.BASE_URL + "/user/addresses", this.authHttpOptions)
       .pipe(catchError(this.handleError<any>("getAddressList")));
   }
 
   getAddress(id: number): Observable<any> {
     return this.http
-      .get(this.url + "/user/address/" + id, this.authHttpOptions)
+      .get(PROPERTIES.BASE_URL + "/user/address/" + id, this.authHttpOptions)
       .pipe(catchError(this.handleError<any>("getAddress")));
   }
 
   addAddress(address: any): Observable<any> {
     return this.http
-      .post(this.url + "/user/address", address, this.authHttpOptions)
+      .post(
+        PROPERTIES.BASE_URL + "/user/address",
+        address,
+        this.authHttpOptions
+      )
       .pipe(catchError(this.handleError<any>("addAddress")));
   }
 
   deleteAddress(id: number): Observable<any> {
     return this.http
-      .delete(this.url + "/user/address/" + id, this.authHttpOptions)
+      .delete(PROPERTIES.BASE_URL + "/user/address/" + id, this.authHttpOptions)
       .pipe(catchError(this.handleError<any>("deleteAddress")));
   }
 
   modifyAddress(id: number, address: any): Observable<any> {
     return this.http
-      .put(this.url + "/user/address/" + id, address, this.authHttpOptions)
+      .put(
+        PROPERTIES.BASE_URL + "/user/address/" + id,
+        address,
+        this.authHttpOptions
+      )
       .pipe(catchError(this.handleError<any>("modifyAddress")));
   }
 }
