@@ -1,14 +1,21 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
+
+// SERVICES
 import { ProductsService } from "src/app/services/products.service";
+import { CartService } from "src/app/services/cart.service";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
+    // PRODUTS APIS --------------------------------------
     const products = this.productsService.getProducts();
     products.subscribe((data) => {
       console.log("PRODUCTS", data);
@@ -47,6 +54,18 @@ export class HomeComponent implements OnInit {
     const sizes = this.productsService.getSizes();
     sizes.subscribe((data) => {
       console.log("SIZES", data);
+    });
+    // PRODUTS APIS --------------------------------------
+
+    // CART APIS------------------------------------------
+    const cartList = this.cartService.getCartList();
+    cartList.subscribe((data) => {
+      console.log("CARTLIST", data);
+    });
+
+    const cartListDetail = this.cartService.getCartListDetail();
+    cartListDetail.subscribe((data) => {
+      console.log("CARTLIST DETAILS", data);
     });
   }
 }
