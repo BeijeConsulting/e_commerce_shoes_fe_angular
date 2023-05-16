@@ -5,6 +5,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CommonModule } from "@angular/common";
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -21,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
@@ -48,6 +52,9 @@ export function HttpLoaderFactory(http: HttpClient){
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTabsModule,
+    MatDatepickerModule, 
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
