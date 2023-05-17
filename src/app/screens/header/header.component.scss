@@ -1,0 +1,97 @@
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.toolbar {
+  height: 80px;
+  background-color: white;
+}
+
+.hamburger-menu {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+.header-menu {
+  height: 80px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  min-width: 60%;
+  display: flex;
+  line-height: 100px;
+  justify-content: space-around;
+  a {
+    text-decoration: none;
+    padding: 0 20px;
+    font-size: 1rem;
+  }
+}
+
+.nav-links a:hover {
+  background-color: #ee6317;
+  color: white;
+}
+.logo {
+  width: 130px;
+  img {
+    width: 100%;
+  }
+}
+
+.user-icon {
+  background-image: url("../../../assets/images/header/Sample_User_Icon.png");
+  background-repeat: no-repeat;
+  background-size: contain; /* Adjust as needed */
+  background-color: white;
+  border: none; /* Remove default button border */
+  padding: 0; /* Remove any padding */
+  width: 20px; /* Set the width of the button to match the image */
+  height: 20px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.cart-icon {
+  background-image: url("../../../assets/images/header/shopping-cart-20392.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: contain; /* Adjust as needed */
+  border: none; /* Remove default button border */
+  padding: 0; /* Remove any padding */
+  width: 20px; /* Set the width of the button to match the image */
+  height: 20px;
+  cursor: pointer;
+}
+
+.small-logo {
+  width: 60px;
+  img {
+    width: 100%;
+  }
+}
+.sidenav-container {
+  height: 100vh;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+
+.sidenav {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.example-full-width {
+  padding: 10px;
+  background-color: white;
+  width: 10%;
+}

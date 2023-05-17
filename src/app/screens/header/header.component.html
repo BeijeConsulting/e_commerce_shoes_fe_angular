@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-toolbar class="toolbar">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle(); toggleSideNav()"
+      fxShow="true"
+      fxHide.gt-md
+      class="hamburger-menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="header-menu">
+      <div class="logo" fxHide="true" fxShow.gt-md>
+        <img src="../../../assets/images/header/belle-scarpe-logo.png" />
+      </div>
+      <div class="small-logo" fxShow="true" fxHide.gt-md>
+        <img src="../../../assets/images/header/download.png" />
+      </div>
+      <div fxHide="true" fxShow.gt-md class="nav-links">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a href="#" mat-button>UOMO</a>
+        <a href="#" mat-button>DONNA</a>
+        <a href="#" mat-button>UNISEX</a>
+        <a href="#" mat-button>BRAND</a>
+        <a href="#" mat-button>NOVITA</a>
+      </div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="LENS" />
+      </mat-form-field>
+      <div>
+        <button class="cart-icon"></button>
+        <button class="user-icon"></button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container [ngClass]="{ 'sidenav-container': isVisible }">
+    <mat-sidenav #sidenav mode="side" class="sidenav" tabindex="-1">
+      <mat-nav-list>
+        <a (click)="sidenav.toggle(); toggleSideNav()" href="" mat-list-item
+          >Close</a
+        >
+        <a href="#" mat-list-item>Menu Item 1</a>
+        <a href="#" mat-list-item>Menu Item 2</a>
+        <a href="#" mat-list-item>Menu Item 3</a>
+        <a href="#" mat-list-item>Menu Item 4</a>
+        <a href="#" mat-list-item>Menu Item 5</a>
+        <a href="#" mat-list-item>Menu Item 6</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

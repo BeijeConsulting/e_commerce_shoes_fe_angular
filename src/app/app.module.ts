@@ -4,12 +4,8 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CommonModule } from "@angular/common";
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-
-
+import { MatIconModule } from "@angular/material/icon";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./screens/home/home.component";
@@ -21,15 +17,23 @@ import { ButtonComponent } from "./components/button/button.component";
 import { InputTextFieldComponent } from "./components/input-text-field/input-text-field.component";
 import { InputPasswordFieldComponent } from "./components/input-password-field/input-password-field.component";
 import { MatSelectModule } from "@angular/material/select";
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MatNativeDateModule } from '@angular/material/core';
-import { FooterComponent } from './components/footer/footer.component';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HeaderComponent } from "./screens/header/header.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { HomepageCategoryCardsComponent } from "./components/homepage-category-cards/homepage-category-cards.component";
+import { SwiperModule } from "swiper/angular";
+import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatNativeDateModule } from "@angular/material/core";
 
-export function HttpLoaderFactory(http: HttpClient){
-  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
 }
 
 @NgModule({
@@ -42,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient){
     ButtonComponent,
     InputTextFieldComponent,
     InputPasswordFieldComponent,
-    FooterComponent,
+    HeaderComponent,
+    HomepageCategoryCardsComponent,
+    SliderHomepageComponent,
     // MatSelectModule
   ],
   imports: [
@@ -55,26 +61,26 @@ export function HttpLoaderFactory(http: HttpClient){
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatTabsModule,
-    MatDatepickerModule, 
-    MatNativeDateModule,
-    MatIconModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     MatIconModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatListModule,
+    FlexLayoutModule,
+    MatDatepickerModule,
+    SwiperModule,
+    MatTabsModule,
+    MatNativeDateModule,
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
-    matIconRegistry.addSvgIcon('instagram', domSanitizer.bypassSecurityTrustResourceUrl("../assets/images/icons/instagram.svg"));
-    matIconRegistry.addSvgIcon('youtube', domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/icons/youtube.svg'));
-    matIconRegistry.addSvgIcon('facebook', domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/icons/facebook.svg'));
-  }
-}
+export class AppModule {}
