@@ -5,7 +5,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CommonModule } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon";
-
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./screens/home/home.component";
@@ -26,6 +26,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { SwiperModule } from "swiper/angular";
+import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatNativeDateModule } from "@angular/material/core";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -42,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputTextFieldComponent,
     InputPasswordFieldComponent,
     HeaderComponent,
+    SliderHomepageComponent,
     // MatSelectModule
   ],
   imports: [
@@ -66,6 +71,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSidenavModule,
     MatListModule,
     FlexLayoutModule,
+    MatDatepickerModule,
+    SwiperModule,
+    MatTabsModule,
+    MatNativeDateModule,
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],
