@@ -1,9 +1,15 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 // Libraries
 import { SwiperSlideDirective } from "swiper/angular";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper";
 // install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 @Component({
   selector: "app-slider-homepage",
