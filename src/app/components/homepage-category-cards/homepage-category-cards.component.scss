@@ -2,9 +2,9 @@
 
 .homepage-category-cards {
   display: flex;
-  //   justify-content: center;
-  //   position: relative;
-
+  .category-card {
+    position: relative;
+  }
   .category-card-content-wrapper {
     position: absolute;
     top: 15%;
