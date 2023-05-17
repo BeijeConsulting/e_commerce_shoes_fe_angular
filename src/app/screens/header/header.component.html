@@ -2,7 +2,7 @@
   <mat-toolbar class="toolbar">
     <button
       mat-icon-button
-      (click)="sidenav.toggle()"
+      (click)="sidenav.toggle(); toggleSideNav()"
       fxShow="true"
       fxHide.gt-md
       class="hamburger-menu"
@@ -35,10 +35,12 @@
     </div>
   </mat-toolbar>
 
-  <mat-sidenav-container [ngClass]="status ? 'sidenav-container' : ''">
-    <mat-sidenav #sidenav mode="side" class="sidenav">
+  <mat-sidenav-container [ngClass]="{ 'sidenav-container': isVisible }">
+    <mat-sidenav #sidenav mode="side" class="sidenav" tabindex="-1">
       <mat-nav-list>
-        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a (click)="sidenav.toggle(); toggleSideNav()" href="" mat-list-item
+          >Close</a
+        >
         <a href="#" mat-list-item>Menu Item 1</a>
         <a href="#" mat-list-item>Menu Item 2</a>
         <a href="#" mat-list-item>Menu Item 3</a>

@@ -29,9 +29,19 @@
 .nav-links {
   min-width: 60%;
   display: flex;
+  line-height: 100px;
   justify-content: space-around;
+  a {
+    text-decoration: none;
+    padding: 0 20px;
+    font-size: 1rem;
+  }
 }
 
+.nav-links a:hover {
+  background-color: #ee6317;
+  color: white;
+}
 .logo {
   width: 130px;
   img {
@@ -71,6 +81,9 @@
 }
 .sidenav-container {
   height: 100vh;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
 }
 
 .sidenav {

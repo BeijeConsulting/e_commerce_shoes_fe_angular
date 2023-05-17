@@ -26,6 +26,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { HomepageCategoryCardsComponent } from "./components/homepage-category-cards/homepage-category-cards.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -42,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputTextFieldComponent,
     InputPasswordFieldComponent,
     HeaderComponent,
+    HomepageCategoryCardsComponent,
     // MatSelectModule
   ],
   imports: [
@@ -63,9 +68,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatIconModule,
     MatToolbarModule,
+    MatTabsModule,
     MatSidenavModule,
+    MatDatepickerModule,
     MatListModule,
     FlexLayoutModule,
+    MatNativeDateModule,
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],
