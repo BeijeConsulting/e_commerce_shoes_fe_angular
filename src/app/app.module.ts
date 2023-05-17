@@ -21,8 +21,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
-import { SwiperModule } from "swiper/angular";
+import { HeaderComponent } from "./screens/header/header.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -38,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ButtonComponent,
     InputTextFieldComponent,
     InputPasswordFieldComponent,
-    SliderHomepageComponent,
+    HeaderComponent,
     // MatSelectModule
   ],
   imports: [
@@ -59,7 +62,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
     MatIconModule,
-    SwiperModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    FlexLayoutModule,
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],

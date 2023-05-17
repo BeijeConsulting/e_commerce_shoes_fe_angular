@@ -19,6 +19,7 @@ import { HomeComponent } from "./screens/home/home.component";
 import { IdentityComponent } from "./screens/identity/identity.component";
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 import { SignupFormComponent } from "./components/signup-form/signup-form.component";
+import { HeaderComponent } from "./screens/header/header.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   //   path: ':lang', component: CmsComponent,
   //   children: [
   { path: "", component: HomeComponent },
+  { path: "header", component: HeaderComponent },
   //     {
   //       path: 'area-personale', component: UserInfoComponent,
   //       children: [
