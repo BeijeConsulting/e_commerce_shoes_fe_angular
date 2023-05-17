@@ -31,6 +31,7 @@ import { SwiperModule } from "swiper/angular";
 import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
+import { FooterComponent } from "./components/footer/footer.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     HomepageCategoryCardsComponent,
     SliderHomepageComponent,
+    FooterComponent,
     // MatSelectModule
   ],
   imports: [
