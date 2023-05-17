@@ -4,7 +4,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CommonModule } from "@angular/common";
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from "@angular/material/icon";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -17,13 +17,15 @@ import { ButtonComponent } from "./components/button/button.component";
 import { InputTextFieldComponent } from "./components/input-text-field/input-text-field.component";
 import { InputPasswordFieldComponent } from "./components/input-password-field/input-password-field.component";
 import { MatSelectModule } from "@angular/material/select";
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
+import { SwiperModule } from "swiper/angular";
 
-export function HttpLoaderFactory(http: HttpClient){
-  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
 }
 
 @NgModule({
@@ -36,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient){
     ButtonComponent,
     InputTextFieldComponent,
     InputPasswordFieldComponent,
+    SliderHomepageComponent,
     // MatSelectModule
   ],
   imports: [
@@ -52,10 +55,11 @@ export function HttpLoaderFactory(http: HttpClient){
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     MatIconModule,
+    SwiperModule,
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],
