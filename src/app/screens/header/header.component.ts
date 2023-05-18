@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -8,7 +7,17 @@ import { Component } from "@angular/core";
 export class HeaderComponent {
   isVisible: boolean = false;
 
+  inputFocused: boolean = false;
+
+  constructor() {}
   toggleSideNav() {
     this.isVisible = !this.isVisible;
+  }
+
+  wideInput() {
+    this.inputFocused = true;
+  }
+  smallInput() {
+    this.inputFocused = false;
   }
 }

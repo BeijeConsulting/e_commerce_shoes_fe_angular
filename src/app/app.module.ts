@@ -31,6 +31,8 @@ import { SwiperModule } from "swiper/angular";
 import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatMenuTrigger } from "@angular/material/menu";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -79,8 +81,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SwiperModule,
     MatTabsModule,
     MatNativeDateModule,
+    MatMenuModule,
   ],
-  providers: [MatFormFieldModule],
+  providers: [MatFormFieldModule, MatMenuTrigger],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
