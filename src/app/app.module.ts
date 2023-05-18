@@ -26,13 +26,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { HomepageCategoryCardsComponent } from "./components/homepage-category-cards/homepage-category-cards.component";
 import { SwiperModule } from "swiper/angular";
 import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
-import { BoxImageComponent } from "./components/box-image/box-image.component";
-import { ProductsSliderComponent } from "./components/products-slider/products-slider.component";
-import { ProductCardComponent } from "./components/product-card/product-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -49,10 +47,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputTextFieldComponent,
     InputPasswordFieldComponent,
     HeaderComponent,
+    HomepageCategoryCardsComponent,
     SliderHomepageComponent,
     BoxImageComponent,
     ProductsSliderComponent,
     ProductCardComponent,
+    FooterComponent,
+    PreFooterComponent,
     // MatSelectModule
   ],
   imports: [
@@ -74,7 +75,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatIconModule,
     MatToolbarModule,
+    MatTabsModule,
     MatSidenavModule,
+    MatDatepickerModule,
     MatListModule,
     FlexLayoutModule,
     MatDatepickerModule,

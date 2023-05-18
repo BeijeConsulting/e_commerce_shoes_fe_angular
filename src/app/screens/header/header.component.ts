@@ -6,9 +6,9 @@ import { Component } from "@angular/core";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
-  status: boolean = true;
-  clickEvent() {
-    this.status = !this.status;
-    console.log(this.status);
+  isVisible: boolean = false;
+
+  toggleSideNav() {
+    this.isVisible = !this.isVisible;
   }
 }
