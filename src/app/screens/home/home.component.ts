@@ -10,16 +10,64 @@ import { CartService } from "src/app/services/cart.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+  productsMan: any = null;
+  productsWoman: any[] = [];
+  productsUnisex: any[] = [];
+  isDataReady: boolean = false;
+
   constructor(
     private productsService: ProductsService,
     private cartService: CartService
   ) {}
+
   ngOnInit(): void {
     // PRODUTS APIS --------------------------------------
-    const products = this.productsService.getProducts();
+    const products = this.productsService.getProducts(
+      1,
+      "it",
+      "?type=m&orderBy=date",
+      8
+    );
     products.subscribe((data) => {
       console.log("PRODUCTS", data);
     });
+
+    const productsMan = this.productsService.getProducts(
+      1,
+      "it",
+      "?type=m&orderBy=date",
+      8
+    );
+    productsMan.subscribe((data) => {
+      this.productsMan = data.products;
+      this.isDataReady = true;
+
+      console.log("PRODUCTSMAN", this.productsMan);
+    });
+
+    // const productsWoman = this.productsService.getProducts(
+    //   1,
+    //   "it",
+    //   "?type=w&orderBy=date",
+    //   8
+    // );
+    // productsWoman.subscribe((data) => {
+    //   this.productsWoman = data;
+
+    //   console.log("PRODUCTSWOMAN", this.productsWoman);
+    // });
+
+    // const productsUnisex = this.productsService.getProducts(
+    //   1,
+    //   "it",
+    //   "?type=u&orderBy=date",
+    //   8
+    // );
+    // productsUnisex.subscribe((data) => {
+    //   this.productsUnisex = data;
+
+    //   console.log("PRODUCTSUNISEX", this.productsUnisex);
+    // });
 
     const newProducts = this.productsService.getNewProducts();
     newProducts.subscribe((data) => {

@@ -33,6 +33,11 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatMenuTrigger } from "@angular/material/menu";
+import { BoxImageComponent } from "./components/box-image/box-image.component";
+import { ProductsSliderComponent } from "./components/products-slider/products-slider.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { PreFooterComponent } from "./components/pre-footer/pre-footer.component";
+import { ProductCardComponent } from "./components/product-card/product-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -51,6 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     HomepageCategoryCardsComponent,
     SliderHomepageComponent,
+    BoxImageComponent,
+    ProductsSliderComponent,
+    ProductCardComponent,
+    FooterComponent,
+    PreFooterComponent,
     // MatSelectModule
   ],
   imports: [
