@@ -20,6 +20,7 @@ import { IdentityComponent } from "./screens/identity/identity.component";
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 import { SignupFormComponent } from "./components/signup-form/signup-form.component";
 import { HeaderComponent } from "./screens/header/header.component";
+import { ProductsListComponent } from "./screens/products-list/products-list.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   //   children: [
   { path: "", component: HomeComponent },
   { path: "header", component: HeaderComponent },
+  { path: "scarpe", component: ProductsListComponent},
   //     {
   //       path: 'area-personale', component: UserInfoComponent,
   //       children: [

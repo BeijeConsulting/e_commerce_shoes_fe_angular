@@ -33,6 +33,13 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
 import { FooterComponent } from "./components/footer/footer.component";
 import { PreFooterComponent } from './components/pre-footer/pre-footer.component';
+import { ProductsListComponent } from './screens/products-list/products-list.component';
+import { SelectComponent } from "./components/select/select.component";
+import { SliderComponent } from './components/slider/slider.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -53,6 +60,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     SliderHomepageComponent,
     FooterComponent,
     PreFooterComponent,
+    ProductsListComponent,
+    SelectComponent,
+    SliderComponent,
+    PaginatorComponent,
     // MatSelectModule
   ],
   imports: [
@@ -83,6 +94,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SwiperModule,
     MatTabsModule,
     MatNativeDateModule,
+    MatSliderModule,
+    MatPaginatorModule
   ],
   providers: [MatFormFieldModule],
   bootstrap: [AppComponent],
