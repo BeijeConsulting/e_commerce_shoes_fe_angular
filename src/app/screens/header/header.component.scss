@@ -2,11 +2,6 @@
   flex: 1 1 auto;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
 .toolbar {
   height: 80px;
   background-color: white;
@@ -34,12 +29,13 @@
   a {
     text-decoration: none;
     padding: 0 20px;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
 .nav-links a:hover {
   background-color: #ee6317;
+  cursor: pointer;
   color: white;
 }
 .logo {
@@ -47,6 +43,12 @@
   img {
     width: 100%;
   }
+}
+
+.header-menu-link {
+  background-color: #ee6317;
+  cursor: pointer;
+  color: white;
 }
 
 .user-icon {
@@ -90,8 +92,7 @@
   width: 100%; /* Adjust the width as needed */
 }
 
-.example-full-width {
+.input-full-width {
   padding: 10px;
-  background-color: white;
-  width: 10%;
+  width: 100%;
 }

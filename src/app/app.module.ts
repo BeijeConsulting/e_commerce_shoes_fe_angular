@@ -31,15 +31,13 @@ import { SwiperModule } from "swiper/angular";
 import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatMenuTrigger } from "@angular/material/menu";
+import { BoxImageComponent } from "./components/box-image/box-image.component";
+import { ProductsSliderComponent } from "./components/products-slider/products-slider.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { PreFooterComponent } from './components/pre-footer/pre-footer.component';
-import { ProductsListComponent } from './screens/products-list/products-list.component';
-import { SelectComponent } from "./components/select/select.component";
-import { SliderComponent } from './components/slider/slider.component';
-import { MatSliderModule } from '@angular/material/slider';
-import { PaginatorComponent } from './components/paginator/paginator.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { PreFooterComponent } from "./components/pre-footer/pre-footer.component";
+import { ProductCardComponent } from "./components/product-card/product-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -58,12 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     HomepageCategoryCardsComponent,
     SliderHomepageComponent,
+    BoxImageComponent,
+    ProductsSliderComponent,
+    ProductCardComponent,
     FooterComponent,
     PreFooterComponent,
-    ProductsListComponent,
-    SelectComponent,
-    SliderComponent,
-    PaginatorComponent,
     // MatSelectModule
   ],
   imports: [
@@ -94,10 +91,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SwiperModule,
     MatTabsModule,
     MatNativeDateModule,
-    MatSliderModule,
-    MatPaginatorModule
+    MatMenuModule,
   ],
-  providers: [MatFormFieldModule],
+  providers: [MatFormFieldModule, MatMenuTrigger],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
