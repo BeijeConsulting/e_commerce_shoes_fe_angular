@@ -32,6 +32,7 @@ import { SliderHomepageComponent } from "./components/slider-homepage/slider-hom
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
 import { FooterComponent } from "./components/footer/footer.component";
+import { PreFooterComponent } from './components/pre-footer/pre-footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomepageCategoryCardsComponent,
     SliderHomepageComponent,
     FooterComponent,
+    PreFooterComponent,
     // MatSelectModule
   ],
   imports: [
