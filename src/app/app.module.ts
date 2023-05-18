@@ -30,6 +30,9 @@ import { SwiperModule } from "swiper/angular";
 import { SliderHomepageComponent } from "./components/slider-homepage/slider-homepage.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatNativeDateModule } from "@angular/material/core";
+import { BoxImageComponent } from "./components/box-image/box-image.component";
+import { ProductsSliderComponent } from "./components/products-slider/products-slider.component";
+import { ProductCardComponent } from "./components/product-card/product-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -47,6 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputPasswordFieldComponent,
     HeaderComponent,
     SliderHomepageComponent,
+    BoxImageComponent,
+    ProductsSliderComponent,
+    ProductCardComponent,
     // MatSelectModule
   ],
   imports: [

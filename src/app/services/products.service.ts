@@ -34,7 +34,8 @@ export class ProductsService {
   ): Observable<any> {
     return this.http
       .get(
-        PROPERTIES.BASE_URL + "/products/page=1/perPage=10/it",
+        PROPERTIES.BASE_URL +
+          `/products/page=${page}/perPage=${perPage}/${lang}`,
         this.httpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
