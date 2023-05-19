@@ -38,6 +38,11 @@ import { ProductsSliderComponent } from "./components/products-slider/products-s
 import { FooterComponent } from "./components/footer/footer.component";
 import { PreFooterComponent } from "./components/pre-footer/pre-footer.component";
 import { ProductCardComponent } from "./components/product-card/product-card.component";
+import { SingleProductComponent } from "./screens/single-product/single-product.component";
+import { SingleProductSliderComponent } from "./components/single-product-slider/single-product-slider.component";
+import { InfoProductBoxComponent } from "./components/info-product-box/info-product-box.component";
+import { AccordionItemComponent } from "./components/accordion-item/accordion-item.component";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -61,6 +66,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCardComponent,
     FooterComponent,
     PreFooterComponent,
+    SingleProductComponent,
+    SingleProductSliderComponent,
+    InfoProductBoxComponent,
+    AccordionItemComponent,
     // MatSelectModule
   ],
   imports: [
@@ -92,6 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTabsModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatExpansionModule,
   ],
   providers: [MatFormFieldModule, MatMenuTrigger],
   bootstrap: [AppComponent],
