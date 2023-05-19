@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -9,7 +10,7 @@ export class HeaderComponent {
 
   inputFocused: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
   toggleSideNav() {
     this.isVisible = !this.isVisible;
   }
@@ -19,5 +20,9 @@ export class HeaderComponent {
   }
   smallInput() {
     this.inputFocused = false;
+  }
+
+  goToCart() {
+    this.router.navigate(["cart"]);
   }
 }

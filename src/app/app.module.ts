@@ -38,6 +38,9 @@ import { ProductsSliderComponent } from "./components/products-slider/products-s
 import { FooterComponent } from "./components/footer/footer.component";
 import { PreFooterComponent } from "./components/pre-footer/pre-footer.component";
 import { ProductCardComponent } from "./components/product-card/product-card.component";
+import { CartComponent } from "./screens/cart/cart.component";
+import { CartHeaderComponent } from "./components/cart-header/cart-header.component";
+import { MatCardModule } from "@angular/material/card";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -61,6 +64,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCardComponent,
     FooterComponent,
     PreFooterComponent,
+    CartComponent,
+    CartHeaderComponent,
     // MatSelectModule
   ],
   imports: [
@@ -92,6 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTabsModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatCardModule,
   ],
   providers: [MatFormFieldModule, MatMenuTrigger],
   bootstrap: [AppComponent],

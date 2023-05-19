@@ -50,7 +50,18 @@
         />
       </mat-form-field>
       <div>
-        <button class="cart-icon"></button>
+        <button
+          class="cart-icon"
+          mat-button
+          [matMenuTriggerFor]="menu"
+        ></button>
+        <mat-menu #menu="matMenu">
+          <p mat-menu-item>Carrello</p>
+          <p mat-menu-item>Totale:</p>
+          <a class="header-menu-link" mat-menu-item (click)="goToCart()"
+            >CARRELLO</a
+          >
+        </mat-menu>
         <button class="user-icon"></button>
       </div>
     </div>

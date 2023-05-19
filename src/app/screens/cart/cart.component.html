@@ -1,0 +1,45 @@
+<app-cart-header></app-cart-header>
+<div class="cart-container">
+  <div class="cart-sub-container">
+    <div class="products-container">
+      <div class="product-card">
+        <app-product-card
+          *ngFor="let product of products"
+          [product]="product"
+        ></app-product-card>
+      </div>
+      <div class="coupon-code">
+        <p>COUPON E CODICE SCONTO</p>
+        <mat-form-field class="example-full-width">
+          <input matInput />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="info-container">
+      <mat-card class="info-cards order">
+        <mat-card-content><h2>RIEPILOGO ORDINE</h2></mat-card-content>
+        <div>
+          <p>TOTALE</p>
+          <p>EURO 0.00</p>
+        </div>
+        <span class="order-underline"></span>
+      </mat-card>
+      <mat-card class="info-cards">
+        <div class="info-cards-box">
+          <mat-card-content>METODI DI CONSEGNA</mat-card-content>
+          <div class="shipment-method">
+            <mat-icon>home</mat-icon>
+            <p>Consegna a domicilio</p>
+          </div>
+        </div>
+        <span class="payment-underline"></span>
+        <div class="info-cards-box">
+          <mat-card-content>METODI DI PAGAMENTO</mat-card-content>
+          <div class="payment-method">
+            <img src="../../../assets/images/cart/metodi-pagamento.png" />
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
