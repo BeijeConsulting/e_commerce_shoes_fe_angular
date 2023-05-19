@@ -43,7 +43,11 @@ import { SelectComponent } from "./components/select/select.component";
 import { SliderComponent } from './components/slider/slider.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { WishlistComponent } from './screens/wishlist/wishlist.component';
+import { PersonalDataComponent } from './screens/personal-data/personal-data.component';
+import { UserInfoComponent } from './screens/user-info/user-info.component';
+import { AddressListComponent } from './screens/address-list/address-list.component'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -71,6 +75,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     SelectComponent,
     SliderComponent,
     PaginatorComponent,
+    WishlistComponent,
+    PersonalDataComponent,
+    UserInfoComponent,
+    AddressListComponent,
     // MatSelectModule
   ],
   imports: [
