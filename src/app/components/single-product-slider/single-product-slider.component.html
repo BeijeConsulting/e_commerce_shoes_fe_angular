@@ -1,0 +1,48 @@
+<div class="swiper__container">
+  <swiper
+    [spaceBetween]="10"
+    [navigation]="true"
+    [thumbs]="{ swiper: thumbsSwiper }"
+    class="mySwiper"
+  >
+    <!-- {props.images.map(mapImages)}  -->
+    <ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></ng-template
+    ><ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
+    ><ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-3.jpg"
+    /></ng-template>
+  </swiper>
+
+  <!-- <swiper
+    [onSwiper]="{setThumbsSwiper}"
+    [spaceBetween]="{5}"
+    [slidesPerView]="{props.images.length}"
+    [freeMode]="{true}"
+    [watchSlidesProgress]="{true}"
+    modules="{[FreeMode,"
+    Navigation,
+    Thumbs]}
+    class="mySwiper2"
+  >
+    {props.images.map(mapImages)}
+  </swiper> -->
+
+  <swiper
+    (swiper)="thumbsSwiper = $event"
+    [spaceBetween]="5"
+    [slidesPerView]="3"
+    [freeMode]="true"
+    [watchSlidesProgress]="true"
+    class="mySwiper2"
+  >
+    <ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></ng-template
+    ><ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
+    ><ng-template swiperSlide
+      ><img src="https://swiperjs.com/demos/images/nature-3.jpg"
+    /></ng-template>
+  </swiper>
+</div>
