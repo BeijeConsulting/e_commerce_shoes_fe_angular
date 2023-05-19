@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   isVisible: boolean = false;
   inputFocused: boolean = false;
   categories: Observable<any>;
@@ -19,8 +19,9 @@ export class HeaderComponent implements OnInit{
       console.log("CATEGORIES AAAA", data);
     });
   }
+
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    // Initialization code goes here
   }
 
   toggleSideNav() {
