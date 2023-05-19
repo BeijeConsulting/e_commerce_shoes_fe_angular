@@ -1,0 +1,12 @@
+<div class="user-info">
+    <h1>{{ "userInfo.myAccount" | translate }}</h1>
+    <div class="outlet">
+        <nav class="userInfo__navlink">
+            <p><a routerLink="/area-personale/">Area personale</a></p>
+            <p><a routerLink="/area-personale/indirizzi">Indirizzi</a></p>
+            <p><a routerLink="/area-personale/lista-desideri">ProductList</a></p>
+            <!-- Qua manca la route del cart -->
+        </nav>
+    </div>
+    <router-outlet></router-outlet>
+</div>

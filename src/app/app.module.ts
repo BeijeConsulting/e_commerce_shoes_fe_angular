@@ -38,6 +38,16 @@ import { ProductsSliderComponent } from "./components/products-slider/products-s
 import { FooterComponent } from "./components/footer/footer.component";
 import { PreFooterComponent } from "./components/pre-footer/pre-footer.component";
 import { ProductCardComponent } from "./components/product-card/product-card.component";
+import { ProductsListComponent } from "./screens/products-list/products-list.component";
+import { SelectComponent } from "./components/select/select.component";
+import { SliderComponent } from "./components/slider/slider.component";
+import { MatSliderModule } from "@angular/material/slider";
+import { PaginatorComponent } from "./components/paginator/paginator.component";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { WishlistComponent } from "./screens/wishlist/wishlist.component";
+import { PersonalDataComponent } from "./screens/personal-data/personal-data.component";
+import { UserInfoComponent } from "./screens/user-info/user-info.component";
+import { AddressListComponent } from "./screens/address-list/address-list.component";
 import { SingleProductComponent } from "./screens/single-product/single-product.component";
 import { SingleProductSliderComponent } from "./components/single-product-slider/single-product-slider.component";
 import { InfoProductBoxComponent } from "./components/info-product-box/info-product-box.component";
@@ -66,6 +76,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCardComponent,
     FooterComponent,
     PreFooterComponent,
+    ProductsListComponent,
+    SelectComponent,
+    SliderComponent,
+    PaginatorComponent,
+    WishlistComponent,
+    PersonalDataComponent,
+    UserInfoComponent,
+    AddressListComponent,
     SingleProductComponent,
     SingleProductSliderComponent,
     InfoProductBoxComponent,
@@ -101,6 +119,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTabsModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatSliderModule,
+    MatPaginatorModule,
     MatExpansionModule,
   ],
   providers: [MatFormFieldModule, MatMenuTrigger],

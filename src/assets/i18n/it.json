@@ -339,5 +339,16 @@
       "addWishlistError": "Qualcosa è andato storto nell'aggiunta alla wishlist"
     }
   },
-  "lang": "it"
+  "lang": "it",
+  "colors": {
+    "green": "VERDE",
+    "blue": "BLU",
+    "grey": "GRIGIO",
+    "liliac": "LILLA",
+    "multicolor": "MULTICOLORE",
+    "black": "NERO",
+    "pink": "ROSA",
+    "red": "ROSSO",
+    "white": "BIANCO"
+  }
 }

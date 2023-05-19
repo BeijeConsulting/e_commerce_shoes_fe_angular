@@ -1,0 +1,37 @@
+@import "../../../style/common/variables.scss";
+
+.products-list {
+  position: relative;
+  padding: 4.5rem 0;
+  h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
+  &__no-products {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: x-large;
+    padding-top: 5rem;
+    padding-bottom: 0;
+  }
+}
+
+.category-select {
+  text-transform: uppercase;
+}
+
+.select-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 650px) {
+  .products-list {
+    .grid-list {
+      padding: 2rem 8rem 3rem;
+    }
+  }
+}

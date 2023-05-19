@@ -1,22 +1,17 @@
 <div class="container">
   <mat-toolbar class="toolbar">
-    <button
-      mat-icon-button
-      (click)="sidenav.toggle(); toggleSideNav()"
-      fxShow="true"
-      fxHide.gt-md
-      class="hamburger-menu"
-    >
+    <button mat-icon-button (click)="sidenav.toggle(); toggleSideNav()" fxShow="true" fxHide.gt-md
+      class="hamburger-menu">
       <mat-icon *ngIf="!isVisible">menu</mat-icon>
       <mat-icon *ngIf="isVisible">close</mat-icon>
     </button>
 
     <div class="header-menu">
       <div class="logo" fxHide="true" fxShow.gt-md>
-        <img src="../../../assets/images/header/belle-scarpe-logo.png" />
+        <img src="../../../assets/images/header/belle-scarpe-logo.png" routerLink="/" class="logo" />
       </div>
       <div class="small-logo" fxShow="true" fxHide.gt-md>
-        <img src="../../../assets/images/header/download.png" />
+        <img src="../../../assets/images/header/download.png" routerLink="/" class="logo" />
       </div>
       <div fxHide="true" fxShow.gt-md class="nav-links" *ngIf="!inputFocused">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
@@ -39,19 +34,34 @@
         <a href="#" mat-button>BRAND</a>
         <a href="#" mat-button>NOVITà</a>
       </div>
-      <mat-form-field
-        [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'"
-      >
-        <input
-          matInput
-          placeholder="Search"
-          (focus)="wideInput()"
-          (blur)="smallInput()"
-        />
+      <mat-form-field [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'">
+        <input matInput placeholder="Search" (focus)="wideInput()" (blur)="smallInput()" />
       </mat-form-field>
       <div>
         <button class="cart-icon"></button>
-        <button class="user-icon"></button>
+        <button class="user-icon" [matMenuTriggerFor]="userMenu">
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <nav>
+            <button mat-menu-item routerLink="/area-personale/">
+              <mat-icon>account_circle</mat-icon>
+              Nome dinamico
+            </button>
+            <button mat-menu-item routerLink="/area-personale/lista-desideri">
+              <mat-icon>favorite</mat-icon>
+              {{ "wishList.title" | translate }}
+            </button>
+            <button mat-menu-item>
+              <mat-icon>shopping_cart</mat-icon>
+              {{ "userMenuNav.orders" | translate }}
+            </button>
+            <button mat-menu-item routerLink="/it/accedi">
+              <mat-icon>login</mat-icon>
+              {{ "userMenuNav.logIn" | translate }}
+            </button>
+          </nav>
+        </mat-menu>
+
       </div>
     </div>
   </mat-toolbar>
