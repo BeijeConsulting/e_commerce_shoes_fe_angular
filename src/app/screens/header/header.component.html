@@ -1,14 +1,22 @@
 <div class="container">
   <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)="sidenav.toggle(); toggleSideNav()" fxShow="true" fxHide.gt-md
-      class="hamburger-menu">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle(); toggleSideNav()"
+      fxShow="true"
+      fxHide.gt-md
+      class="hamburger-menu"
+    >
       <mat-icon *ngIf="!isVisible">menu</mat-icon>
       <mat-icon *ngIf="isVisible">close</mat-icon>
     </button>
 
     <div class="header-menu">
       <div class="logo" fxHide="true" fxShow.gt-md>
-        <img src="../../../assets/images/header/belle-scarpe-logo.png" routerLink="/" />
+        <img
+          src="../../../assets/images/header/belle-scarpe-logo.png"
+          routerLink="/"
+        />
       </div>
       <div class="small-logo" fxShow="true" fxHide.gt-md>
         <img src="../../../assets/images/header/download.png" routerLink="/" />
@@ -16,12 +24,16 @@
       <div fxHide="true" fxShow.gt-md class="nav-links" *ngIf="!inputFocused">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
 
-        <a mat-button [matMenuTriggerFor]="menu">{{"header.man" | translate | uppercase}}</a>
+        <a mat-button [matMenuTriggerFor]="menu">{{
+          "header.man" | translate | uppercase
+        }}</a>
         <mat-menu #menu="matMenu">
           <a class="header-menu-link" mat-menu-item>Item 1</a>
           <a class="header-menu-link" mat-menu-item>Item 2</a>
         </mat-menu>
-        <a mat-button [matMenuTriggerFor]="menu">{{"header.woman" | translate | uppercase}}</a>
+        <a mat-button [matMenuTriggerFor]="menu">{{
+          "header.woman" | translate | uppercase
+        }}</a>
         <mat-menu #menu="matMenu">
           <a class="header-menu-link" mat-menu-item>Item 1</a>
           <a class="header-menu-link" mat-menu-item>Item 2</a>
@@ -31,17 +43,41 @@
           <a class="header-menu-link" mat-menu-item>Item 1</a>
           <a class="header-menu-link" mat-menu-item>Item 2</a>
         </mat-menu>
-        <a href="#" mat-button routerLink="/brand">{{"header.brands" | translate | uppercase}}</a>
-        <a href="#" mat-button>{{"header.new" | translate | uppercase}}</a>
+        <a href="#" mat-button routerLink="/brand">{{
+          "header.brands" | translate | uppercase
+        }}</a>
+        <a href="#" mat-button>{{ "header.new" | translate | uppercase }}</a>
       </div>
-      <mat-form-field [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'" style="margin-top: 20px;">
-        <input matInput placeholder="Search" (focus)="wideInput()" (blur)="smallInput()" />
+      <mat-form-field
+        [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'"
+        style="margin-top: 20px"
+      >
+        <input
+          matInput
+          placeholder="Search"
+          (focus)="wideInput()"
+          (blur)="smallInput()"
+        />
       </mat-form-field>
       <div>
-        <button class="cart-icon"></button>
+        <button class="cart-icon" [matMenuTriggerFor]="cartMenu"></button>
+        <mat-menu #cartMenu="matMenu">
+          <h2>Carrello:</h2>
+          <h3>Totale: 0.00</h3>
+          <nav>
+            <app-button
+              (click)="goToCart()"
+              [buttonStyle]="'default-button'"
+              label="CARRELLO"
+            ></app-button>
+          </nav>
+        </mat-menu>
         <!-- <button class="user-icon"></button> -->
-        <button class="user-icon" [matMenuTriggerFor]="userMenu">
-        </button>
+        <button
+          class="user-icon"
+          [matMenuTriggerFor]="userMenu"
+          (click)="goToCart()"
+        ></button>
         <mat-menu #userMenu="matMenu">
           <nav>
             <button mat-menu-item routerLink="/area-personale/">
