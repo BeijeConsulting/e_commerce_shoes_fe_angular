@@ -25,6 +25,7 @@ import { PersonalDataComponent } from "./screens/personal-data/personal-data.com
 import { UserInfoComponent } from "./screens/user-info/user-info.component";
 import { WishlistComponent } from "./screens/wishlist/wishlist.component";
 import { AddressListComponent } from "./screens/address-list/address-list.component";
+import { BrandsComponent } from "./screens/brands/brands.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "header", component: HeaderComponent },
   { path: "scarpe", component: ProductsListComponent},
+  { path: "brand", component: BrandsComponent},
 {
     path: 'area-personale', component: UserInfoComponent,
     children: [

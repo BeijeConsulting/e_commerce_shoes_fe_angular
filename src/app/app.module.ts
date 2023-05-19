@@ -47,7 +47,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { WishlistComponent } from './screens/wishlist/wishlist.component';
 import { PersonalDataComponent } from './screens/personal-data/personal-data.component';
 import { UserInfoComponent } from './screens/user-info/user-info.component';
-import { AddressListComponent } from './screens/address-list/address-list.component'
+import { AddressListComponent } from './screens/address-list/address-list.component';
+import { BrandsComponent } from './screens/brands/brands.component'
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -79,6 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PersonalDataComponent,
     UserInfoComponent,
     AddressListComponent,
+    BrandsComponent,
     // MatSelectModule
   ],
   imports: [
