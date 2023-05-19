@@ -339,5 +339,16 @@
       "addWishlistError": "Somenting went wrong adding to wishlist"
     }
   },
-  "lang": "en"
+  "lang": "en",
+  "colors": {
+    "green": "GREEN",
+    "blue": "BLUE",
+    "grey": "GREY",
+    "liliac": "LILIAC",
+    "multicolor": "MULTICOLOR",
+    "black": "BLACK",
+    "pink": "PINK",
+    "red": "RED",
+    "white": "WHITE"
+  }
 }

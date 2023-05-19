@@ -21,6 +21,12 @@ import { LoginFormComponent } from "./components/login-form/login-form.component
 import { SignupFormComponent } from "./components/signup-form/signup-form.component";
 import { HeaderComponent } from "./screens/header/header.component";
 import { CartComponent } from "./screens/cart/cart.component";
+import { ProductsListComponent } from "./screens/products-list/products-list.component";
+import { PersonalDataComponent } from "./screens/personal-data/personal-data.component";
+import { UserInfoComponent } from "./screens/user-info/user-info.component";
+import { WishlistComponent } from "./screens/wishlist/wishlist.component";
+import { AddressListComponent } from "./screens/address-list/address-list.component";
+import { SingleProductComponent } from "./screens/single-product/single-product.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -39,6 +45,17 @@ const routes: Routes = [
   //         { path: 'lista-desideri', component: WishListComponent },
   //       ]
   //     },
+  { path: ":lang/single-product", component: SingleProductComponent },
+  { path: "scarpe", component: ProductsListComponent },
+  {
+    path: "area-personale",
+    component: UserInfoComponent,
+    children: [
+      { path: "", component: PersonalDataComponent },
+      { path: "indirizzi", component: AddressListComponent },
+      { path: "lista-desideri", component: WishlistComponent },
+    ],
+  },
   //     { path: '**', component: ErrorPageComponent },
   //     {
   //       path: 'scarpe', component: ProductsListComponent,

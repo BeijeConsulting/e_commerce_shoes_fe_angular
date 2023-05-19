@@ -1,0 +1,15 @@
+import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
+import { SwiperComponent } from "swiper/angular";
+import SwiperCore, { Pagination, Thumbs } from "swiper";
+
+SwiperCore.use([Pagination, Thumbs]);
+
+@Component({
+  selector: "app-single-product-slider",
+  templateUrl: "./single-product-slider.component.html",
+  styleUrls: ["./single-product-slider.component.scss"],
+  encapsulation: ViewEncapsulation.None,
+})
+export class SingleProductSliderComponent {
+  thumbsSwiper: any;
+}
