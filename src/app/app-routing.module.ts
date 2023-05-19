@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "header", component: HeaderComponent },
   { path: "scarpe", component: ProductsListComponent},
-  {
+{
     path: 'area-personale', component: UserInfoComponent,
     children: [
       { path: '', component: PersonalDataComponent },
