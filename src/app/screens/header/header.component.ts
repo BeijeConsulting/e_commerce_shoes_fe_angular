@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit{
   inputFocused: boolean = false;
   categories: Observable<any>;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private router: Router) {
     this.categories = this.productsService.getCategories();
     this.categories.subscribe((data) => {
       console.log("CATEGORIES AAAA", data);
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit{
 
   smallInput() {
     this.inputFocused = false;
+  }
+
+  goToCart() {
+    this.router.navigate(["cart"]);
   }
 }

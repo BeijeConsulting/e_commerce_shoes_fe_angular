@@ -1,0 +1,59 @@
+<div class="single-product">
+  <header>
+    <div class="header__container">
+      <p class="header__category">state.product.category</p>
+      <p class="header__price">13 €</p>
+      <!-- {state.selectedSize
+        ? `${state.product.listed_price}€`
+        : `${t("singleProduct.listedPrice")} ${
+            state.product?.listed_price
+          }€`} -->
+    </div>
+    <h2 class="header__brand">
+      <a onClick="{goToBrandPage}">state.product?.brand</a>
+    </h2>
+    <p class="header__name">state.product?.name</p>
+  </header>
+
+  <div class="info__container">
+    <!-- <SingleProductSlider images="{state.product.images}" /> -->
+    <app-single-product-slider></app-single-product-slider>
+    <!-- <div class="slider">
+          <Box sx={{ width: "100%" }}>
+            <Skeleton variant="rectangular" height={700} />
+          </Box>
+        </div> -->
+
+    <div class="info">
+      <select class="info__select-size" name="sizes">
+        <option selected disabled>Seleziona taglia</option>
+        <option value="none" disabled="true">
+          t("singleProduct.sizeSelect")
+        </option>
+        state.product?.productSizes?.map(renderSizesOption)
+      </select>
+      <app-info-product-box></app-info-product-box>
+
+      <app-button
+        label="t('button.addToCart')"
+        [buttonStyle]="'default-button'"
+      ></app-button>
+
+      <div class="info__container">
+        <p class="info__wishlist">
+          t("singleProduct.addWishList")
+          <span> ❤ </span>
+        </p>
+      </div>
+
+      <!-- <AccordionItem
+        productDescription="{state.product?.description}"
+        productBrand="{state.product?.brand}"
+      /> -->
+      <app-accordion-item
+        title="Descrizione"
+        description="Descrizione di prova"
+      ></app-accordion-item>
+    </div>
+  </div>
+</div>
