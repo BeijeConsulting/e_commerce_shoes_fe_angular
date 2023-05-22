@@ -28,6 +28,7 @@ import { WishlistComponent } from "./screens/wishlist/wishlist.component";
 import { AddressListComponent } from "./screens/address-list/address-list.component";
 import { SingleProductComponent } from "./screens/single-product/single-product.component";
 import { BrandsComponent } from "./screens/brands/brands.component";
+import { CheckoutComponent } from "./screens/checkout/checkout.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "header", component: HeaderComponent },
   { path: "cart", component: CartComponent },
+  { path: "checkout", component: CheckoutComponent },
   //     {
   //       path: 'area-personale', component: UserInfoComponent,
   //       children: [
@@ -48,8 +50,8 @@ const routes: Routes = [
   //     },
   { path: ":lang/single-product", component: SingleProductComponent },
   { path: "scarpe", component: ProductsListComponent },
-    { path: "brand", component: BrandsComponent},
-{
+  { path: "brand", component: BrandsComponent },
+  {
     path: "area-personale",
     component: UserInfoComponent,
     children: [
