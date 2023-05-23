@@ -1,0 +1,57 @@
+<div class="container__accordion">
+  <!-- <Accordion class="accordion" sx={{ boxShadow: "none" }}> -->
+  <mat-accordion class="accordion__summary">
+    <!-- <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        class="accordion__summary"
+      > -->
+    <mat-expansion-panel-header></mat-expansion-panel-header>
+    <div class="accordion__summary--wrapper">
+      <div class="accordion__info">
+        <h3>ORDINE:</h3>
+        <p>{{ order.orderId }}</p>
+      </div>
+      <div class="accordion__info">
+        <h3>Intestatario:</h3>
+        <p>{{ user.first_name }} {{ user.last_name }}</p>
+      </div>
+      <div class="accordion__info">
+        <h3>Prodotti:</h3>
+        <p>{{ order.productList.length }}</p>
+      </div>
+      <div class="accordion__info">
+        <h3>Totale:</h3>
+        <p>€ {{ order.paidTotalPrice }}</p>
+      </div>
+
+      <!-- <div class="accordion__info">
+        <h3>Pagamento:</h3>
+        <p>
+          Paypal
+          <span>PAGATO</span>
+        </p>
+      </div>
+      <div class="accordion__info">
+        <h3>Stato:</h3>
+        <p>
+          <span class="accordion__stato">CONSEGNATO</span>
+        </p>
+      </div> -->
+    </div>
+    <!-- </AccordionSummary> -->
+  </mat-accordion>
+  <!-- <AccordionDetails>
+        <ul>{props.products?.map(renderProductList)}</ul>
+        {/* <div class="accordion__details">
+          <img src={shoe1} alt="wine bottle" />
+          <h3>Nike Air Zoom</h3>
+        </div>
+
+        <div class="accordion__details--price">
+          <p>160,00$</p>
+        </div> */}
+      </AccordionDetails> -->
+  <!-- </Accordion> -->
+</div>

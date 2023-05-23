@@ -17,7 +17,7 @@ export class CartService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDIyOTMzMSwiZXhwIjoxNjg0MjMyOTMxfQ.BNYMuFecHi0R1c0qVj8R0oqp-2aXPfJLhucsgVyHjiU",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDgyNzQ4NSwiZXhwIjoxNjg0ODMxMDg1fQ.MAgggChO0pb9IuUmmAbl2jVFwhGFqDaAwFi5iPS7Y78",
     }),
   };
   constructor(private http: HttpClient) {}

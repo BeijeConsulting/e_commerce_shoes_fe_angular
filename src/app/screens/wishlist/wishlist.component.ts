@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
+import { WhishlistService } from "src/app/services/wishlist.service";
 @Component({
-  selector: 'app-wishlist',
-  templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss']
+  selector: "app-wishlist",
+  templateUrl: "./wishlist.component.html",
+  styleUrls: ["./wishlist.component.scss"],
 })
-export class WishlistComponent {
+export class WishlistComponent implements OnInit {
+  wishlist: any;
+  constructor(private wishlistService: WhishlistService) {}
 
+  ngOnInit(): void {
+    const wishlist = this.wishlistService.getWishList();
+    wishlist.subscribe((data) => {
+      console.log("WISHLIST", data.items);
+      this.wishlist = data.items;
+    });
+  }
 }

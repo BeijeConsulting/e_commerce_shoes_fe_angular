@@ -1,0 +1,36 @@
+<article class="card">
+  <!-- <Link to={`/${lang}/scarpa/${props.productId}`}> -->
+  <div class="card__container">
+    <img src="{{ product.image }}" />
+
+    <div class="card__absolute">
+      <div class="card__header">
+        <div class="card__wrapper">
+          <div class="card__price">
+            <p class="card__sellingPrice">
+              {{ product.listedPrice | currency : "EUR" }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card__info">
+        <h2>{{ product.name }}</h2>
+        <p class="card__brand">{{ product.brand }}</p>
+
+        <div class="card__info--detail">
+          <p>{{ product.color }}</p>
+          <p>{{ product.size }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </Link> -->
+
+  <div class="card__icon">
+    <!-- onClick={deleteItem} -->
+    <span>
+      <!-- <ImCancelCircle /> -->
+    </span>
+  </div>
+</article>

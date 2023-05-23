@@ -14,6 +14,8 @@ import { WishlistComponent } from "./screens/wishlist/wishlist.component";
 import { AddressListComponent } from "./screens/address-list/address-list.component";
 import { SingleProductComponent } from "./screens/single-product/single-product.component";
 import { BrandsComponent } from "./screens/brands/brands.component";
+import { OrderListComponent } from "./screens/order-list/order-list.component";
+import { CheckoutComponent } from "./screens/checkout/checkout.component";
 
 const routes: Routes = [
 
@@ -40,6 +42,7 @@ const routes: Routes = [
       { path: "", component: PersonalDataComponent },
       { path: "indirizzi", component: AddressListComponent },
       { path: "lista-desideri", component: WishlistComponent },
+      { path: "lista-ordini", component: OrderListComponent },
     ],
   },
   {
@@ -50,6 +53,7 @@ const routes: Routes = [
       { path: "registrati", component: SignupFormComponent },
     ],
   },
+  { path: "checkout", component: CheckoutComponent },
 ];
 
 @NgModule({

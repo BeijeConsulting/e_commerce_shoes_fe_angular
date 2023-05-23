@@ -55,8 +55,13 @@ import { AccordionItemComponent } from "./components/accordion-item/accordion-it
 import { MatExpansionModule } from "@angular/material/expansion";
 import { CartComponent } from "./screens/cart/cart.component";
 import { CartHeaderComponent } from "./components/cart-header/cart-header.component";
-import { MatCardModule } from "@angular/material/card";;
-import { BrandsComponent } from './screens/brands/brands.component'
+import { MatCardModule } from "@angular/material/card";
+import { BrandsComponent } from "./screens/brands/brands.component";
+import { CheckoutComponent } from "./screens/checkout/checkout.component";
+import { OrderCardComponent } from "./components/order-card/order-card.component";
+import { WishlistProductCardComponent } from "./components/wishlist-product-card/wishlist-product-card.component";
+import { OrderListComponent } from "./screens/order-list/order-list.component";
+import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 import { GlobalStateService } from "./services/global-state.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -96,6 +101,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartComponent,
     CartHeaderComponent,
     BrandsComponent,
+    CheckoutComponent,
+    OrderCardComponent,
+    WishlistProductCardComponent,
+    OrderListComponent,
+    OrderListAccordionComponent,
     // MatSelectModule
   ],
   imports: [
