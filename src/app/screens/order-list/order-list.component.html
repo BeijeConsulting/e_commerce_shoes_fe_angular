@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li *ngFor="let order of orders">
+      <app-order-list-accordion
+        [order]="order"
+        [user]="user"
+      ></app-order-list-accordion>
+    </li>
+  </ul>
+</div>
