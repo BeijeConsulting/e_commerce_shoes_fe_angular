@@ -29,6 +29,7 @@ import { AddressListComponent } from "./screens/address-list/address-list.compon
 import { SingleProductComponent } from "./screens/single-product/single-product.component";
 import { BrandsComponent } from "./screens/brands/brands.component";
 import { OrderListComponent } from "./screens/order-list/order-list.component";
+import { CheckoutComponent } from "./screens/checkout/checkout.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "header", component: HeaderComponent },
   { path: "cart", component: CartComponent },
+  { path: "checkout", component: CheckoutComponent },
   //     {
   //       path: 'area-personale', component: UserInfoComponent,
   //       children: [

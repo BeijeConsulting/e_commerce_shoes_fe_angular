@@ -1,0 +1,109 @@
+<div class="checkout">
+  <header>
+    <img
+      src="../../../assets/images/checkout/belle-scarpe-logo-grigio.png"
+      alt="logo"
+    />
+    <h1>CHECKOUT</h1>
+    <img
+      src="../../../assets/images/checkout/digicert.png"
+      alt="digicert logo"
+    />
+  </header>
+
+  <div class="__checkout-content">
+    <div class="__left">
+      <div class="__container">
+        <h2></h2>
+        <ul>
+          <li class="__delivery-address">
+            <label htmlFor="delivery-address-1">
+              <address>
+                <p>
+                  <strong class="__name">casa</strong>
+                  <br />
+                </p>
+                <p>Nome Cognome</p>
+                <p>Italia</p>
+                <p>00402 - Roma</p>
+                <p>Via quella bella, 45</p>
+                <p>Lasciare al portiere</p>
+              </address>
+            </label>
+            <input
+              type="radio"
+              name="delivery-address"
+              id="delivery-address-1"
+            />
+          </li>
+        </ul>
+        <a>ADD A NEW ADDRESS</a>
+      </div>
+      <div class="__container">
+        <h2></h2>
+        <ul>
+          <li class="__payment-method">
+            <input type="radio" name="payment-methods" id="payment-methods-1" />
+            <label htmlFor="payment-methods-1">
+              <img
+                src="../../../assets/images/checkout/mastercard.png"
+                alt=""
+              />
+              <p>Mastercard</p>
+            </label>
+          </li>
+          <li class="__payment-method">
+            <input type="radio" name="payment-methods" id="payment-methods-2" />
+            <label htmlFor="payment-methods-2">
+              <img src="../../../assets/images/checkout/paypal.png" alt="" />
+              <p>PayPal</p>
+            </label>
+          </li>
+          <li class="__payment-method">
+            <input type="radio" name="payment-methods" id="payment-methods-3" />
+            <label htmlFor="payment-methods-3">
+              <img
+                src="../../../assets/images/checkout/klarnainstalments.png"
+                alt=""
+              />
+              <p>Klarna</p>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <app-button [buttonStyle]="'filter-button'" label="BUY NOW"></app-button>
+    </div>
+    <div class="__right">
+      <div class="__container">
+        <article class="checkout-product">
+          <div class="__image">
+            <img
+              src="../../../assets/images/desktop/sneakers-desktop.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="__info">
+            <div class="__price">PRODUCT PRICE€</div>
+            <div class="__name">PRODUCT NAME</div>
+            <div class="__color-size">
+              <div>PRODUCT COLOR</div>
+              <div>PRODUCT SIZE</div>
+            </div>
+            <div>
+              QUANTITY
+              <span class="__quantity">PRODUCT QUANTITY</span>
+            </div>
+          </div>
+        </article>
+        <div class="recap-container">
+          <h2 class="recap-container__header">RECAP</h2>
+          <div class="recap-container__total">
+            <span>RECAP TOTAL</span>
+            <span class="price">PRICE</span>
+            <span class="underline"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -57,9 +57,6 @@ import { CartComponent } from "./screens/cart/cart.component";
 import { CartHeaderComponent } from "./components/cart-header/cart-header.component";
 import { MatCardModule } from "@angular/material/card";
 import { BrandsComponent } from "./screens/brands/brands.component";
-import { WishlistProductCardComponent } from "./components/wishlist-product-card/wishlist-product-card.component";
-import { OrderListComponent } from "./screens/order-list/order-list.component";
-import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -98,6 +95,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartComponent,
     CartHeaderComponent,
     BrandsComponent,
+    CheckoutComponent,
+    OrderCardComponent,
     WishlistProductCardComponent,
     OrderListComponent,
     OrderListAccordionComponent,
