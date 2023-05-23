@@ -20,7 +20,8 @@
     </div>
     <!-- <div class="card-container"> -->
     <div class="product-card-container" *ngIf="isDataReady">
-        <app-product-card *ngFor="let product of productsManCategory" [product]="product"></app-product-card>
+        <app-product-card *ngFor="let product of productsCategory" [product]="product"
+            [routerLink]="getProductLink(product.id)"></app-product-card>
     </div>
     <!-- </div> -->
     <h2 class="products-list__no-products">{{ "productsList.noProducts" | translate }}</h2>

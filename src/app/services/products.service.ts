@@ -72,7 +72,7 @@ export class ProductsService {
 
   getProduct(id?: number, lang?: string): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + `/products/122/it`, this.httpOptions)
+      .get(PROPERTIES.BASE_URL + `/products/${id}/${lang}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 

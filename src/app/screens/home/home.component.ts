@@ -46,20 +46,6 @@ export class HomeComponent implements OnInit {
       console.log("PRODUCTSMAN", this.productsMan);
     });
 
-    const productsManCategory = this.productsService.getProducts(
-      1,
-      "it",
-      "?type=w&category=camminata",
-      8
-    );
-
-    productsManCategory.subscribe((data) => {
-      this. productsManCategory = data.products;
-      this.isDataReady = true;
-
-      console.log("PRODUCTSMAN-CATEGORY", this. productsManCategory);
-    });
-
     // const productsWoman = this.productsService.getProducts(
     //   1,
     //   "it",

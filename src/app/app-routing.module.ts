@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "single-product", component: SingleProductComponent },
   //{ path: "scarpe", component: ProductsListComponent },
+  { path: "scarpa/:id", component: SingleProductComponent },
   { path: "brand", component: BrandsComponent},
   {
     path: "scarpe",

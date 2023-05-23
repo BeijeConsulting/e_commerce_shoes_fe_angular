@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { GlobalStateService } from 'src/app/services/global-state.service';
 
 @Component({
   selector: 'app-products-list',
@@ -38,14 +39,16 @@ export class ProductsListComponent implements OnInit {
     'colors.red',
     'colors.white'];
 
-  productsManCategory: any[] = [];
+  productsCategory: any[] = [];
   isDataReady: boolean = false;
   type: string = '';
   category: string = '';
+  currentLanguage: string | undefined;
 
   constructor(
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private globalStateService: GlobalStateService
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +60,14 @@ export class ProductsListComponent implements OnInit {
       .subscribe(() => {
         this.updateCategoryAndType();
       });
+
+      this.globalStateService.lang$.subscribe((lang) => {
+      this.currentLanguage = lang;
+      console.log('Global state:', this.currentLanguage);
+    });
+
   }
+  
 
   updateCategoryAndType(): void {
     const url = window.location.href;
@@ -84,19 +94,26 @@ export class ProductsListComponent implements OnInit {
     console.log('Type:', this.type);
     console.log('Category:', this.category);
 
-    const productsManCategory = this.productsService.getProducts(
+
+    // API del prodotto per categoria
+    const productsCategory = this.productsService.getProducts(
       1,
-      "it",
+      `${this.currentLanguage}`,
       `?type=${this.type}&category=${this.category}`,
       8
     );
 
-    productsManCategory.subscribe((data) => {
-      this.productsManCategory = data.products;
+    productsCategory.subscribe((data) => {
+      this.productsCategory = data.products;
       this.isDataReady = true;
 
-      console.log("PRODUCTSMAN-CATEGORY-LIST", this.productsManCategory);
+      console.log("PRODUCTSMAN-CATEGORY-LIST", this.productsCategory);
     });
+
+  }
+
+  getProductLink(id: string): string {
+    return `/scarpa/${id}/`;
   }
 }
 
