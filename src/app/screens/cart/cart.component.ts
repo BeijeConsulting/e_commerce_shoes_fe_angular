@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
+import { OrdersService } from "src/app/services/orders.service";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-cart",
@@ -7,21 +9,34 @@ import { ProductsService } from "src/app/services/products.service";
   styleUrls: ["./cart.component.scss"],
 })
 export class CartComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private ordersService: OrdersService,
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {}
 
   products: any;
 
   ngOnInit(): void {
-    const products = this.productsService.getProducts(
-      1,
-      "it",
-      "?type=m&orderBy=date",
-      8
-    );
+    // const products = this.ordersService.getOrderList();
+    // products.subscribe((data) => {
+    //   this.products = data.products;
+    // });
+    const products = this.cartService.getCartList();
     products.subscribe((data) => {
-      this.products = data.products;
-      console.log("DATAAAA", data);
+      this.products = data.items;
+      console.log(data.items);
     });
+    // const products = this.productsService.getProducts(
+    //   1,
+    //   "it",
+    //   "?type=m&orderBy=date",
+    //   8
+    // );
+    // products.subscribe((data) => {
+    //   this.products = data.products;
+    //   console.log("DATAAAA", data);
+    // });
     // const productById = this.productsService.getProduct();
     // productById.subscribe((data) => {
     //   this.products = data;

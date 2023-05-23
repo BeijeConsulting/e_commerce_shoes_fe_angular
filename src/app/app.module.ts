@@ -58,6 +58,7 @@ import { CartHeaderComponent } from "./components/cart-header/cart-header.compon
 import { MatCardModule } from "@angular/material/card";
 import { BrandsComponent } from "./screens/brands/brands.component";
 import { CheckoutComponent } from "./screens/checkout/checkout.component";
+import { OrderCardComponent } from "./components/order-card/order-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -97,6 +98,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CartHeaderComponent,
     BrandsComponent,
     CheckoutComponent,
+    OrderCardComponent,
     // MatSelectModule
   ],
   imports: [
