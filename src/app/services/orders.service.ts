@@ -17,7 +17,7 @@ export class OrdersService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDIyNDA0MSwiZXhwIjoxNjg0MjI3NjQxfQ.RQqHHaoty2oFn1T5yGIqXqnzayRM8JBhsSn5f7MqQDo",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDc2NjkwNCwiZXhwIjoxNjg0NzcwNTA0fQ.5OIUrN0DjS_y6LKQAlV36yiiRh1g33mk9x2Rc6sxFyE",
     }),
   };
 

@@ -1,7 +1,7 @@
 @import "../../../style/common/variables.scss";
 @import "../../../style/common/mixin.scss";
 
-.user-info {
+.userInfo {
   padding: 2% 4%;
 
   h1 {
@@ -35,10 +35,11 @@
       margin-top: 0;
     }
     &__navlink {
+      align-self: flex-start;
       flex-basis: 30%;
     }
     .outlet {
-      @include flex(space-between, stretch);
+      @include flex(stretch);
     }
   }
 }

@@ -17,7 +17,7 @@ export class AddressesService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDIyNDA0MSwiZXhwIjoxNjg0MjI3NjQxfQ.RQqHHaoty2oFn1T5yGIqXqnzayRM8JBhsSn5f7MqQDo",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDc1ODM3NCwiZXhwIjoxNjg0NzYxOTc0fQ.J6BkxdPIC-EAcVzWpMzM2Ib_dDXdeisi-9YGfBYHo5w",
     }),
   };
 

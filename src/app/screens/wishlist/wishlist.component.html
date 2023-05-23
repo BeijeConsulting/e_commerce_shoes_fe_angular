@@ -1,1 +1,12 @@
-<p>wishlist works!</p>
+<div class="wishlist">
+  <h1>{{ "wishList.title" | translate }}</h1>
+
+  <div class="wishlist__container">
+    <app-wishlist-product-card
+      *ngFor="let product of wishlist"
+      [product]="product"
+    ></app-wishlist-product-card>
+  </div>
+
+  <div class="wishlist__empty"></div>
+</div>
