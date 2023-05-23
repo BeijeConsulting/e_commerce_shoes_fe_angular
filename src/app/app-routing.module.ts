@@ -28,6 +28,7 @@ import { WishlistComponent } from "./screens/wishlist/wishlist.component";
 import { AddressListComponent } from "./screens/address-list/address-list.component";
 import { SingleProductComponent } from "./screens/single-product/single-product.component";
 import { BrandsComponent } from "./screens/brands/brands.component";
+import { OrderListComponent } from "./screens/order-list/order-list.component";
 
 const routes: Routes = [
   //  { path: '', redirectTo: '/language', pathMatch: 'full' },
@@ -48,14 +49,15 @@ const routes: Routes = [
   //     },
   { path: ":lang/single-product", component: SingleProductComponent },
   { path: "scarpe", component: ProductsListComponent },
-    { path: "brand", component: BrandsComponent},
-{
+  { path: "brand", component: BrandsComponent },
+  {
     path: "area-personale",
     component: UserInfoComponent,
     children: [
       { path: "", component: PersonalDataComponent },
       { path: "indirizzi", component: AddressListComponent },
       { path: "lista-desideri", component: WishlistComponent },
+      { path: "lista-ordini", component: OrderListComponent },
     ],
   },
   //     { path: '**', component: ErrorPageComponent },
