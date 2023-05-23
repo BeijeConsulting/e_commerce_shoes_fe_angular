@@ -57,6 +57,7 @@ import { CartComponent } from "./screens/cart/cart.component";
 import { CartHeaderComponent } from "./components/cart-header/cart-header.component";
 import { MatCardModule } from "@angular/material/card";;
 import { BrandsComponent } from './screens/brands/brands.component'
+import { GlobalStateService } from "./services/global-state.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -131,7 +132,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatCardModule,
   ],
-  providers: [MatFormFieldModule, MatMenuTrigger],
+  providers: [MatFormFieldModule, MatMenuTrigger, GlobalStateService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

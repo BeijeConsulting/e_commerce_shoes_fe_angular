@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { GlobalStateService } from "src/app/services/global-state.service";
+import { TranslateService } from "@ngx-translate/core";
+import { formatCategoryCode } from "src/assets/utils/utils";
 
 @Component({
   selector: "app-header",
@@ -12,16 +15,27 @@ export class HeaderComponent implements OnInit {
   isVisible: boolean = false;
   inputFocused: boolean = false;
   categories: Observable<any>;
+  currentLanguage: string | undefined;
 
-  constructor(private productsService: ProductsService, private router: Router) {
+  constructor(private productsService: ProductsService, 
+    private router: Router,
+    private globalStateService: GlobalStateService, 
+    private translateService : TranslateService) {
     this.categories = this.productsService.getCategories();
     this.categories.subscribe((data) => {
       console.log("CATEGORIES AAAA", data);
     });
   }
 
-  ngOnInit(): void {
-    // Initialization code goes here
+    ngOnInit(): void {
+
+      this.currentLanguage = this.translateService.currentLang;
+
+  }
+
+  getCategoryLink(categoryCode: string, path: string): string {
+    const formattedCode = formatCategoryCode(categoryCode);
+    return `/scarpe/${path}/${formattedCode}/`;
   }
 
   toggleSideNav() {

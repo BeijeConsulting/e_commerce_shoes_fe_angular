@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { GlobalStateService } from 'src/app/services/global-state.service';
 
 @Component({
   selector: 'app-footer',
@@ -65,7 +67,10 @@ export class FooterComponent {
     }
   ];
 
-  constructor(private translateService: TranslateService){
+  constructor(private translateService: TranslateService, 
+    private router: Router, 
+    private route: ActivatedRoute,  
+    private globalStateService: GlobalStateService){
     this.translateService.setDefaultLang('it');
   }
 
@@ -73,12 +78,51 @@ export class FooterComponent {
     // Implement your navigation logic here
   }
 
+  // changeLanguageIt() {
+  //   this.translateService.use("it");
+  //   this.globalStateService.setLanguage('it');
+  //   console.log("Language chosen: It")
+  // }
+  // changeLanguageEn() {
+  //   console.log("Language chosen: En")
+  //   this.globalStateService.setLanguage('en');
+  //   this.translateService.use("en");
+  // }
+
+
   changeLanguageIt() {
-    this.translateService.use("it");
+    this.updateLanguage('it', 'en');
     console.log("Language chosen: It")
   }
+
   changeLanguageEn() {
+    this.updateLanguage('en', 'it');
     console.log("Language chosen: En")
-    this.translateService.use("en");
   }
+
+  private updateLanguage(newLang: string, oldLang: string): void {
+    this.translateService.use(newLang);
+    this.globalStateService.setLanguage(newLang);
+
+    // const currentUrl = this.router.url;
+    // const updatedUrl = currentUrl.replace(`/${oldLang}/`, `/${newLang}/`);
+    
+    // this.router.navigateByUrl(updatedUrl);
+    // console.log(`Language changed: ${newLang}`);
+  }
+
 }
+
+
+
+
+// selectLanguage(code: string): void {
+//   const currentLang = this.route.snapshot.paramMap.get('lang');
+//   const currentPath = this.router.url;
+
+//   if (currentPath === `/${currentLang}`) {
+//     this.router.navigate([currentPath.replace(`/${currentLang}`, '')]);
+//   } else {
+//     this.router.navigate([`/${code}${currentPath.replace(`/${currentLang}/`, '')}`]);
+//   }
+// }

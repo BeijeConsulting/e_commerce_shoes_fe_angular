@@ -11,6 +11,7 @@ import { CartService } from "src/app/services/cart.service";
 })
 export class HomeComponent implements OnInit {
   productsMan: any = null;
+  productsManCategory: any[] = [];
   productsWoman: any[] = [];
   productsUnisex: any[] = [];
   isDataReady: boolean = false;
@@ -43,6 +44,20 @@ export class HomeComponent implements OnInit {
       this.isDataReady = true;
 
       console.log("PRODUCTSMAN", this.productsMan);
+    });
+
+    const productsManCategory = this.productsService.getProducts(
+      1,
+      "it",
+      "?type=w&category=camminata",
+      8
+    );
+
+    productsManCategory.subscribe((data) => {
+      this. productsManCategory = data.products;
+      this.isDataReady = true;
+
+      console.log("PRODUCTSMAN-CATEGORY", this. productsManCategory);
     });
 
     // const productsWoman = this.productsService.getProducts(

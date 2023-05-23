@@ -35,7 +35,7 @@ export class ProductsService {
     return this.http
       .get(
         PROPERTIES.BASE_URL +
-          `/products/page=${page}/perPage=${perPage}/${lang}`,
+          `/products/page=${page}/perPage=${perPage}/${lang}${filter}`,
         this.httpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));

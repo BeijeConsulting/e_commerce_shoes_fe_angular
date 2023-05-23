@@ -18,6 +18,11 @@
         <app-select label='header.brands' [selectStyle]="'category-select'" [content]="options3"></app-select>
         <app-select label='header.color' [selectStyle]="'category-select'" [content]="options4"></app-select>
     </div>
+    <!-- <div class="card-container"> -->
+    <div class="product-card-container" *ngIf="isDataReady">
+        <app-product-card *ngFor="let product of productsManCategory" [product]="product"></app-product-card>
+    </div>
+    <!-- </div> -->
     <h2 class="products-list__no-products">{{ "productsList.noProducts" | translate }}</h2>
     <app-paginator></app-paginator>
 </div>

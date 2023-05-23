@@ -24,6 +24,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
+import { GlobalStateService } from 'src/app/services/global-state.service';
 
 @Component({
   selector: 'app-brands',
@@ -33,9 +34,11 @@ import { ProductsService } from 'src/app/services/products.service';
 export class BrandsComponent implements OnInit {
   brands: any;
   letters: string[] = [];
+  currentLanguage: string | undefined;
   
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService,
+    private globalStateService: GlobalStateService) {}
 
   ngOnInit(): void {
     const brands = this.productsService.getBrands();
@@ -45,6 +48,12 @@ export class BrandsComponent implements OnInit {
       console.log("BRANDS", this.brands);
       console.log("LETTERS", this.letters);
     });
+
+    this.globalStateService.lang$.subscribe((lang) => {
+      this.currentLanguage = lang;
+      console.log('Global state:', this.currentLanguage);
+    });
+
   }
 
   getUniqueLetters(brands: any[]): string[] {
