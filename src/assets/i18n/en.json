@@ -350,5 +350,8 @@
     "pink": "PINK",
     "red": "RED",
     "white": "WHITE"
+  },
+  "filters": {
+    "none": "None"
   }
 }

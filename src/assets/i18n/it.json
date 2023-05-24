@@ -350,5 +350,8 @@
     "pink": "ROSA",
     "red": "ROSSO",
     "white": "BIANCO"
+  },
+  "filters": {
+    "none": "Nessuno"
   }
 }
