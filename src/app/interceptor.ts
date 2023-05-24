@@ -10,6 +10,7 @@ import { Injectable } from "@angular/core";
 import { switchMap, catchError, throwError, Observable, of } from "rxjs";
 import { StorageService } from "./services/storage/storage.service";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthServices } from "./services/auth/auth.service";
 // import { AuthService } from "./services/auth/auth.service";
 // import { OrderService } from "./services/order/order.service";
 
@@ -26,7 +27,10 @@ export class InterceptorProvider implements HttpInterceptor {
     }),
   };
 
-  constructor(private storageService: StorageService) {} // private orderService: OrderService // private authService: AuthService, // private storageService: StorageService,
+  constructor(
+    private storageService: StorageService,
+    private authService: AuthServices
+  ) {} // private orderService: OrderService // private authService: AuthService, // private storageService: StorageService,
 
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
     if (request.headers.get("Authorization")) {
@@ -34,6 +38,7 @@ export class InterceptorProvider implements HttpInterceptor {
 
       return next.handle(request).pipe(
         catchError((err) => {
+          console.log("error interceptor", err);
           if (err.text === "coupon added.") {
             return of("Success");
           }
@@ -69,18 +74,18 @@ export class InterceptorProvider implements HttpInterceptor {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
 
-      // return this.authService.refreshToken().pipe(
-      //   switchMap((res) => {
-      //     console.log("nuovo refresh token");
-      //     this.isRefreshing = false;
-      //     const newToken: string = res.token;
+      return this.authService.refreshToken().pipe(
+        switchMap((res) => {
+          console.log("nuovo refresh token");
+          this.isRefreshing = false;
+          const newToken: string = res.token;
 
-      //     this.storageService.setStorage("refreshToken", res.refreshToken);
-      //     this.storageService.setStorage("token", newToken);
-      //     this.authService.token.next(newToken);
-      //     return next.handle(this.addToken(request, newToken));
-      //   })
-      // );
+          this.storageService.setStorage("refreshToken", res.refreshToken);
+          this.storageService.setStorage("token", newToken);
+          this.authService.token.next(newToken);
+          return next.handle(this.addToken(request, newToken));
+        })
+      );
     }
     // return next.handle(request);
     return throwError(() => new Error("ERROR: Failed refresh Token"));
