@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { Observable, of, Subject } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
+import { AuthServices } from "./auth/auth.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class AddressesService {
+  addresses: Subject<any> = new Subject();
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -21,7 +23,7 @@ export class AddressesService {
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthServices) {}
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -37,9 +39,22 @@ export class AddressesService {
   }
 
   getAddressList(): Observable<any> {
-    return this.http
-      .get(PROPERTIES.BASE_URL + "/user/addresses", this.authHttpOptions)
-      .pipe(catchError(this.handleError<any>("getAddressList")));
+    // return this.http
+    //   .get(PROPERTIES.BASE_URL + "/user/addresses", this.authHttpOptions)
+    //   .pipe(catchError(this.handleError<any>("getAddressList")));
+
+    const result = new Subject();
+
+    this.http
+      .get(
+        PROPERTIES.BASE_URL + "/user/addresses",
+        this.authService.getHeaderOptions(true)
+      )
+      .subscribe((res) => {
+        this.addresses.next(res);
+        result.next(res);
+      });
+    return result.asObservable();
   }
 
   getAddress(id: number): Observable<any> {

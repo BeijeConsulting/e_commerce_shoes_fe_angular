@@ -12,6 +12,10 @@ export class WishlistComponent implements OnInit {
   constructor(private wishlistService: WhishlistService) {}
 
   ngOnInit(): void {
+    this.getWishlist();
+  }
+
+  getWishlist() {
     const wishlist = this.wishlistService.getWishList();
     wishlist.subscribe((data) => {
       console.log("WISHLIST", data.items);

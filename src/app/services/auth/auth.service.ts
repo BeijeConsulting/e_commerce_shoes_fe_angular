@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of, BehaviorSubject } from "rxjs";
-import { UserLoginInterface } from "../interfaces/UserLoginInterface";
-import { StorageService } from "./storage/storage.service";
+import { UserLoginInterface } from "../../interfaces/UserLoginInterface";
+import { StorageService } from "../storage/storage.service";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
 
 @Injectable({
   providedIn: "root",
 })
-export class AuthServicesService {
+export class AuthServices {
   token: BehaviorSubject<string> = new BehaviorSubject<string>(
     this.storageService.getStorage("token")
   );

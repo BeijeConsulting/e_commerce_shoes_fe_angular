@@ -31,7 +31,9 @@
     button-margin-top" />
   </form>
   } -->
-  <h2>{{ "addresses.yourAddresses" | translate }}</h2>
+  <h2>
+    {{ "addresses.yourAddresses" | translate }}
+  </h2>
   <div
     *ngFor="let address of addresses; let i = index"
     class="address__container__list"

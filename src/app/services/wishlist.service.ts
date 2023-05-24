@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
+import { AuthServices } from "./auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +21,7 @@ export class WhishlistService {
         "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDc1ODM3NCwiZXhwIjoxNjg0NzYxOTc0fQ.J6BkxdPIC-EAcVzWpMzM2Ib_dDXdeisi-9YGfBYHo5w",
     }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthServices) {}
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -37,7 +38,10 @@ export class WhishlistService {
 
   getWishList(): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + "/wishlist", this.authHttpOptions)
+      .get(
+        PROPERTIES.BASE_URL + "/wishlist",
+        this.authService.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("getWishList")));
   }
 
