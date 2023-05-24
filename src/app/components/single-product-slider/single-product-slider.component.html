@@ -7,11 +7,11 @@
   >
     <!-- {props.images.map(mapImages)}  -->
     <ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></ng-template
+      ><img src="{{ images[0].image_path }}" /></ng-template
     ><ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
+      ><img src="{{ images[1].image_path }}" /></ng-template
     ><ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-3.jpg"
+      ><img src="{{ images[2].image_path }}"
     /></ng-template>
   </swiper>
 
@@ -38,11 +38,11 @@
     class="mySwiper2"
   >
     <ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></ng-template
+      ><img src="{{ images[0].image_path }}" /></ng-template
     ><ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
+      ><img src="{{ images[1].image_path }}" /></ng-template
     ><ng-template swiperSlide
-      ><img src="https://swiperjs.com/demos/images/nature-3.jpg"
+      ><img src="{{ images[2].image_path }}"
     /></ng-template>
   </swiper>
 </div>

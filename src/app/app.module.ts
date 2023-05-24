@@ -64,6 +64,9 @@ import { OrderListComponent } from "./screens/order-list/order-list.component";
 import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 import { GlobalStateService } from "./services/global-state.service";
 
+// Interceptors
+import { interceptorProvider } from "./interceptor";
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
 }
@@ -142,7 +145,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatCardModule,
   ],
-  providers: [MatFormFieldModule, MatMenuTrigger, GlobalStateService],
+  providers: [
+    interceptorProvider,
+    MatFormFieldModule,
+    MatMenuTrigger,
+    GlobalStateService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
