@@ -16,17 +16,14 @@ import {
   styleUrls: ["./login-form.component.scss"],
 })
 export class LoginFormComponent implements OnInit {
-  loginForm!: FormGroup; // Add the "!" to allow an uninitialized valueù
-  emailReg: RegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
+  loginForm!: FormGroup; // Add the "!" to allow an uninitialized value
   passwordRegex: RegExp =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?])(?=.*[^\s]).{8,}$/;
   hide = true;
   email = new FormControl("", [Validators.required, Validators.email]);
   password = new FormControl("", [
     Validators.required,
-    Validators.pattern(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?])(?=.*[^\s]).{8,}$/
-    ),
+    Validators.pattern(this.passwordRegex),
   ]);
 
   constructor(
@@ -36,15 +33,6 @@ export class LoginFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.loginForm = new FormGroup({
-    //   // Define your form controls with their initial values and validators
-    //   // For example:
-    //   email: new FormControl("", [Validators.required, Validators.email]),
-    //   password: new FormControl("", [
-    //     Validators.required,
-    //     Validators.pattern(this.passwordRegex),
-    //   ]),
-    // });
     this.loginForm = new FormGroup({
       email: this.email,
       password: this.password,
