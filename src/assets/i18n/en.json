@@ -256,7 +256,8 @@
     "email": "E-MAIL",
     "password": "PASSWORD",
     "signup": "SIGN UP",
-    "signin": "SIGN IN"
+    "signin": "SIGN IN",
+    "telephone": "TELEPHONE"
   },
   "recapCart": {
     "h2": "Order summary",
