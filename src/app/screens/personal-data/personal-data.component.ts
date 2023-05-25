@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthServicesService } from "src/app/services/auth.service";
+import { AuthServices } from "src/app/services/auth/auth.service";
 
 @Component({
   selector: "app-personal-data",
@@ -8,9 +8,13 @@ import { AuthServicesService } from "src/app/services/auth.service";
 })
 export class PersonalDataComponent implements OnInit {
   userData: any;
-  constructor(private authService: AuthServicesService) {}
+  constructor(private authService: AuthServices) {}
 
   ngOnInit(): void {
+    this.getUserData();
+  }
+
+  getUserData() {
     this.authService.getUser().subscribe((data) => {
       console.log("USER DATA", data);
       this.userData = data;

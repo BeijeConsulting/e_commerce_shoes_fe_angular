@@ -1,6 +1,6 @@
 import { IfStmt } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
-import { AuthServicesService } from "src/app/services/auth.service";
+import { AuthServices } from "src/app/services/auth/auth.service";
 import { LoginResponse } from "src/app/interfaces/LoginResponseInterface";
 import { StorageService } from "src/app/services/storage/storage.service";
 import {
@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private formBuilder: FormBuilder,
-    private authService: AuthServicesService
+    private authService: AuthServices
   ) {}
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthServicesService } from "src/app/services/auth.service";
+import { AuthServices } from "src/app/services/auth/auth.service";
 import { OrdersService } from "src/app/services/orders.service";
 
 @Component({
@@ -8,17 +8,19 @@ import { OrdersService } from "src/app/services/orders.service";
   styleUrls: ["./order-list.component.scss"],
 })
 export class OrderListComponent implements OnInit {
+  isLoading = true;
   orders: any[] = [];
   user: any;
   constructor(
     private ordersService: OrdersService,
-    private authService: AuthServicesService
+    private authService: AuthServices
   ) {}
 
   ngOnInit(): void {
     const orders = this.ordersService.getOrderList();
     orders.subscribe((data) => {
       this.orders = data.orders;
+      this.isLoading = false;
       console.log("ORDERS", this.orders);
     });
 
