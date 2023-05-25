@@ -63,6 +63,7 @@ import { WishlistProductCardComponent } from "./components/wishlist-product-card
 import { OrderListComponent } from "./screens/order-list/order-list.component";
 import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 import { GlobalStateService } from "./services/global-state.service";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 // Interceptors
 import { interceptorProvider } from "./interceptor";
@@ -144,6 +145,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatPaginatorModule,
     MatExpansionModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     interceptorProvider,
