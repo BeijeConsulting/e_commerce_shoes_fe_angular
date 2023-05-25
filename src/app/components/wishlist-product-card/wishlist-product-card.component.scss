@@ -5,6 +5,7 @@
   padding: 1%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   position: relative;
+  cursor: pointer;
 
   &__absolute {
     position: relative;
@@ -89,6 +90,10 @@
       }
     }
   }
+}
+
+.card:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
 }
 
 .card__icon {
