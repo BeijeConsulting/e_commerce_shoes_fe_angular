@@ -1,17 +1,28 @@
 <div class="container">
   <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)="sidenav.toggle(); toggleSideNav()" fxShow="true" fxHide.gt-md
-      class="hamburger-menu">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle(); toggleSideNav()"
+      fxShow="true"
+      fxHide.gt-md
+      class="hamburger-menu"
+    >
       <mat-icon *ngIf="!isVisible">menu</mat-icon>
       <mat-icon *ngIf="isVisible">close</mat-icon>
     </button>
 
     <div class="header-menu">
       <div class="logo" fxHide="true" fxShow.gt-md>
-        <img src="../../../assets/images/header/belle-scarpe-logo.png" routerLink="/{{currentLanguage}}" />
+        <img
+          src="../../../assets/images/header/belle-scarpe-logo.png"
+          routerLink="/{{ currentLanguage }}"
+        />
       </div>
       <div class="small-logo" fxShow="true" fxHide.gt-md>
-        <img src="../../../assets/images/header/download.png" routerLink="/{{currentLanguage}}" />
+        <img
+          src="../../../assets/images/header/download.png"
+          routerLink="/{{ currentLanguage }}"
+        />
       </div>
       <div fxHide="true" fxShow.gt-md class="nav-links" *ngIf="!inputFocused">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
@@ -35,19 +46,33 @@
         </mat-menu> -->
 
         <!-- Man Menu -->
-        <a mat-button [matMenuTriggerFor]="manMenu">{{ "header.man" | translate | uppercase }}</a>
+        <a mat-button [matMenuTriggerFor]="manMenu">{{
+          "header.man" | translate | uppercase
+        }}</a>
         <mat-menu #manMenu="matMenu">
-          <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'uomo')" (click)="updateCategory(category.code)">
+          <a
+            class="header-menu-link"
+            mat-menu-item
+            *ngFor="let category of categories | async"
+            [routerLink]="getCategoryLink(category.code, 'uomo')"
+            (click)="updateCategory(category.code)"
+          >
             {{ category.code | uppercase }}
           </a>
         </mat-menu>
 
         <!-- Woman Menu -->
-        <a mat-button [matMenuTriggerFor]="womanMenu">{{ "header.woman" | translate | uppercase }}</a>
+        <a mat-button [matMenuTriggerFor]="womanMenu">{{
+          "header.woman" | translate | uppercase
+        }}</a>
         <mat-menu #womanMenu="matMenu">
-          <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'donna')" (click)="updateCategory(category.code)">
+          <a
+            class="header-menu-link"
+            mat-menu-item
+            *ngFor="let category of categories | async"
+            [routerLink]="getCategoryLink(category.code, 'donna')"
+            (click)="updateCategory(category.code)"
+          >
             {{ category.code | uppercase }}
           </a>
         </mat-menu>
@@ -59,22 +84,32 @@
             [routerLink]="getCategoryLink(category.code, 'unisex')" (onClick)="updateCategory(category.code)">
             {{ category.code | uppercase }}
           </a> -->
-          <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'unisex')" (click)="updateCategory(category.code)">
+          <a
+            class="header-menu-link"
+            mat-menu-item
+            *ngFor="let category of categories | async"
+            [routerLink]="getCategoryLink(category.code, 'unisex')"
+            (click)="updateCategory(category.code)"
+          >
             {{ category.code | uppercase }}
           </a>
-
         </mat-menu>
-
-
 
         <a href="#" mat-button routerLink="/brand">{{
           "header.brands" | translate | uppercase
-          }}</a>
+        }}</a>
         <a href="#" mat-button>{{ "header.new" | translate | uppercase }}</a>
       </div>
-      <mat-form-field [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'" style="margin-top: 20px">
-        <input matInput placeholder="Search" (focus)="wideInput()" (blur)="smallInput()" />
+      <mat-form-field
+        [ngClass]="inputFocused ? 'input-full-width' : 'small-width-input'"
+        style="margin-top: 20px"
+      >
+        <input
+          matInput
+          placeholder="Search"
+          (focus)="wideInput()"
+          (blur)="smallInput()"
+        />
       </mat-form-field>
       <div>
         <button class="cart-icon" [matMenuTriggerFor]="cartMenu"></button>
@@ -82,7 +117,11 @@
           <h2>Carrello:</h2>
           <h3>Totale: 0.00</h3>
           <nav>
-            <app-button (click)="goToCart()" [buttonStyle]="'default-button'" label="CARRELLO"></app-button>
+            <app-button
+              (click)="goToCart()"
+              [buttonStyle]="'default-button'"
+              label="CARRELLO"
+            ></app-button>
           </nav>
         </mat-menu>
         <!-- <button class="user-icon"></button> -->
@@ -97,7 +136,7 @@
               <mat-icon>favorite</mat-icon>
               {{ "wishList.title" | translate }}
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="goToOrders()">
               <mat-icon>shopping_cart</mat-icon>
               {{ "userMenuNav.orders" | translate }}
             </button>

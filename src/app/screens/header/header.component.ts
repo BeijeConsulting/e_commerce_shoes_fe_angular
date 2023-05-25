@@ -17,20 +17,20 @@ export class HeaderComponent implements OnInit {
   categories: Observable<any>;
   currentLanguage: string | undefined;
 
-  constructor(private productsService: ProductsService, 
+  constructor(
+    private productsService: ProductsService,
     private router: Router,
-    private globalStateService: GlobalStateService, 
-    private translateService : TranslateService) {
+    private globalStateService: GlobalStateService,
+    private translateService: TranslateService
+  ) {
     this.categories = this.productsService.getCategories();
     this.categories.subscribe((data) => {
       console.log("CATEGORIES AAAA", data);
     });
   }
 
-    ngOnInit(): void {
-
-      this.currentLanguage = this.translateService.currentLang;
-
+  ngOnInit(): void {
+    this.currentLanguage = this.translateService.currentLang;
   }
 
   getCategoryLink(categoryCode: string, path: string): string {
@@ -57,6 +57,10 @@ export class HeaderComponent implements OnInit {
   updateCategory(category: string): void {
     // this.translateService.use(newLang);
     this.globalStateService.setCategory(category);
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH")
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH");
+  }
+
+  goToOrders() {
+    this.router.navigate(["area-personale/lista-ordini"]);
   }
 }
