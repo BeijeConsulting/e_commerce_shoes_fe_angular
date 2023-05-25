@@ -38,7 +38,7 @@
         <a mat-button [matMenuTriggerFor]="manMenu">{{ "header.man" | translate | uppercase }}</a>
         <mat-menu #manMenu="matMenu">
           <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'uomo')">
+            [routerLink]="getCategoryLink(category.code, 'uomo')" (click)="updateCategory(category.code)">
             {{ category.code | uppercase }}
           </a>
         </mat-menu>
@@ -47,7 +47,7 @@
         <a mat-button [matMenuTriggerFor]="womanMenu">{{ "header.woman" | translate | uppercase }}</a>
         <mat-menu #womanMenu="matMenu">
           <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'donna')">
+            [routerLink]="getCategoryLink(category.code, 'donna')" (click)="updateCategory(category.code)">
             {{ category.code | uppercase }}
           </a>
         </mat-menu>
@@ -55,11 +55,18 @@
         <!-- Unisex Menu -->
         <a mat-button [matMenuTriggerFor]="unisexMenu">UNISEX</a>
         <mat-menu #unisexMenu="matMenu">
+          <!-- <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
+            [routerLink]="getCategoryLink(category.code, 'unisex')" (onClick)="updateCategory(category.code)">
+            {{ category.code | uppercase }}
+          </a> -->
           <a class="header-menu-link" mat-menu-item *ngFor="let category of categories | async"
-            [routerLink]="getCategoryLink(category.code, 'unisex')">
+            [routerLink]="getCategoryLink(category.code, 'unisex')" (click)="updateCategory(category.code)">
             {{ category.code | uppercase }}
           </a>
+
         </mat-menu>
+
+
 
         <a href="#" mat-button routerLink="/brand">{{
           "header.brands" | translate | uppercase

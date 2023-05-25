@@ -12,6 +12,6 @@ export class ProductCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log("PRODUCT from product card", this.product);
+    // console.log("PRODUCT from product card", this.product);
   }
 }

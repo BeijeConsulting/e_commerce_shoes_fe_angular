@@ -1,5 +1,6 @@
 <div class="products-list">
-    <h1>Titolo dinamico scarpe</h1>
+    <h1 *ngIf="type==='w'">{{"productsList.womanShoes" | translate}}: {{currentCategory}}</h1>
+    <h1 *ngIf="type==='m'">{{"productsList.manShoes" | translate}}: {{currentCategory}}</h1>
     <div class="select-container">
         <app-select label='header.organize' [selectStyle]="'category-select'" [content]="options1"
             (optionSelected)="onNewFilterApplied($event)"></app-select>
@@ -26,6 +27,11 @@
             [routerLink]="getProductLink(product.id)"></app-product-card>
     </div>
     <!-- </div> -->
-    <h2 class="products-list__no-products">{{ "productsList.noProducts" | translate }}</h2>
-    <app-paginator></app-paginator>
+    <h2 class="products-list__no-products" *ngIf="productsCategory.length === 0">{{ "productsList.noProducts" |
+        translate }}</h2>
+    <!-- <app-paginator (pageSelected)="onPageSelected($event)"
+        (pageSizeSelected)="onPaginationModified($event)"></app-paginator> -->
+    <app-paginator (paginationModified)="onPaginationModified($event)"></app-paginator>
+
+
 </div>

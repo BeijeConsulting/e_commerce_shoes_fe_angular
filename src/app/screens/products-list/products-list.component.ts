@@ -17,7 +17,7 @@ export class ProductsListComponent implements OnInit {
   isDataReady: boolean = false;
   type: string = '';
   category: string = '';
-  currentLanguage: string | undefined;
+  currentLanguage: string = "it";
   brands: any;
   brandsNames: any[] = [];
   colorsObj: any;
@@ -29,7 +29,10 @@ export class ProductsListComponent implements OnInit {
   colorFilter: string = "";
   brandFilter: string = "";
   newFilterOn: boolean = false;
-  
+  currentCategoryCode: string | undefined;
+  currentCategory: string | undefined;
+  page: number = 1;
+  perPage: number = 10;
 
   constructor(
     private productsService: ProductsService,
@@ -38,6 +41,7 @@ export class ProductsListComponent implements OnInit {
     private translateService: TranslateService
   ) {
 
+    console.log("PARTITO IL COSTRUTTORE DI NUOVO"); 
     //API to get the brands
     this.productsService.getBrands().subscribe((data) => {
       this.brands = data;
@@ -65,6 +69,7 @@ export class ProductsListComponent implements OnInit {
       this.globalStateService.lang$.subscribe((lang) => {
       this.currentLanguage = lang;
       console.log('Global state products-list:', this.currentLanguage);
+      this.setTitleFromCategory();
 
       //API for the colours
       this.productsService.getColors(this.currentLanguage).subscribe((data) => {
@@ -104,7 +109,7 @@ export class ProductsListComponent implements OnInit {
 
     console.log('Type:', this.type);
     console.log('Category:', this.category);
-
+    this.setTitleFromCategory();
 
     // API to get products per category
     const productsCategory = this.productsService.getProducts(
@@ -120,10 +125,27 @@ export class ProductsListComponent implements OnInit {
 
       console.log("PRODUCTSMAN-CATEGORY-LIST", this.productsCategory);
     });
-    
-
 
   }
+
+  setTitleFromCategory(): void {
+
+    this.currentCategoryCode = this.category.charAt(0).toUpperCase() + this.category.slice(1);
+    console.log("currentCategoryCode :", this.currentCategoryCode)
+    console.log("currentLanguage: ", this.currentLanguage)
+      // API to get the specific category
+      const categorySelected = this.productsService.getCategory(
+        this.currentLanguage, this.currentCategoryCode
+      );
+  
+      categorySelected.subscribe((data) => {
+        this.currentCategory = data.category;
+        this.isDataReady = true;
+        console.log("Current category TITLE", this.currentCategory);
+      });
+
+  }
+
 
   getProductLink(id: string): string {
     return `/scarpa/${id}/`;
@@ -144,7 +166,7 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  getProductsByFilter(brand: string, color: string, maxPrice: number, minPrice: number, newOn: boolean): void {
+  getProductsByFilter(page: number, brand: string, color: string, maxPrice: number, minPrice: number, newOn: boolean, perPage: number): void {
 
     let query = `?minPrice=${minPrice}&maxPrice=${maxPrice}&type=${this.type}&category=${this.category}`;
     // part of the code to compone the query according to what parameters we have 
@@ -162,20 +184,18 @@ export class ProductsListComponent implements OnInit {
     let productsCategory = null;
     newOn === true ? 
      ( productsCategory = this.productsService.getNewProducts(
-      1,
+      page,
       `${this.currentLanguage}`,
-      // `?minPrice=${minPrice}&maxPrice=${maxPrice}&type=${this.type}&category=${this.category}&brand=${brand}&color=${color}`,
-      query,
-      8
+       query,
+      perPage
     ) )
      : (
 
       productsCategory = this.productsService.getProducts(
-      1,
+      page,
       `${this.currentLanguage}`,
-      // `?minPrice=${minPrice}&maxPrice=${maxPrice}&type=${this.type}&category=${this.category}&brand=${brand}&color=${color}`,
-      query,
-      8
+       query,
+      perPage
     ))
 
     productsCategory.subscribe((data) => {
@@ -184,8 +204,6 @@ export class ProductsListComponent implements OnInit {
       console.log("PRODUCTSMAN-CATEGORY-LIST", this.productsCategory);
     });
   }
-
-  // en?minPrice=44&maxPrice=161&type=w&category=camminata&brand=Asics&color=Blu
 
   // function to catch selection of the filters
   onOptionSelected(option: string): void {
@@ -200,19 +218,22 @@ export class ProductsListComponent implements OnInit {
       this.newFilterOn = false;
     }
    // option === "novità" ? this.newFilterOn = true : this.newFilterOn = false;
-     this.getProductsByFilter(this.brandFilter, this.colorFilter, this.maxPriceFilter, this.minPriceFilter, this.newFilterOn);
+     this.getProductsByFilter(this.page, this.brandFilter, this.colorFilter, this.maxPriceFilter, 
+      this.minPriceFilter, this.newFilterOn, this.perPage);
   }
 
   onColorFilterApplied(option: string): void {
     console.log('Filter color:', option);
     this.colorFilter = option;
-    this.getProductsByFilter(this.brandFilter, this.colorFilter, this.maxPriceFilter, this.minPriceFilter, false);
+    this.getProductsByFilter(this.page, this.brandFilter, this.colorFilter, this.maxPriceFilter, 
+      this.minPriceFilter, false, this.perPage);
   }
 
   onBrandFilterApplied(option: string): void {
     console.log('Filter brand:', option);
     this.brandFilter = option;
-    this.getProductsByFilter(this.brandFilter, this.colorFilter, this.maxPriceFilter, this.minPriceFilter, false);
+    this.getProductsByFilter(this.page, this.brandFilter, this.colorFilter, 
+      this.maxPriceFilter, this.minPriceFilter, false, this.perPage);
   }
   
   onPriceFilterApplied(priceRange: { minPrice: number, maxPrice: number }): void {
@@ -220,7 +241,19 @@ export class ProductsListComponent implements OnInit {
     console.log('Max Price:', priceRange.maxPrice);
     this.maxPriceFilter = priceRange.maxPrice;
     this.minPriceFilter = priceRange.minPrice;
-    this.getProductsByFilter(this.brandFilter, this.colorFilter, this.maxPriceFilter, this.minPriceFilter, false);
+    this.getProductsByFilter(this.page, this.brandFilter, this.colorFilter, this.maxPriceFilter, this.minPriceFilter, false, this.perPage);
   }
+
+  onPaginationModified(event: { pageSize: number, pageIndex: number }): void {
+    this.perPage = event.pageSize;
+    this.page = event.pageIndex + 1;
+    console.log('Selected page size:', event.pageSize);
+    console.log('Current page index:', event.pageIndex);
+    this.getProductsByFilter(this.page, this.brandFilter, this.colorFilter, this.maxPriceFilter, 
+      this.minPriceFilter, this.newFilterOn, this.perPage);
+    // Perform any desired actions with the selected page size and page index
+  }  
+
+
 }
 
