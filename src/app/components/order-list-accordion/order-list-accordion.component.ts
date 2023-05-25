@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { AuthServices } from "src/app/services/auth/auth.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-order-list-accordion",
@@ -10,12 +11,4 @@ export class OrderListAccordionComponent {
   @Input() order: any;
   @Input() user: any;
   constructor(private authService: AuthServices) {}
-
-  // ngOnInit(): void {
-  //   const user = this.authService.getUser();
-  //   user.subscribe((data) => {
-  //     console.log("user", data);
-  //     this.user = data;
-  //   });
-  // }
 }
