@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of, BehaviorSubject } from "rxjs";
 import { UserLoginInterface } from "../../interfaces/UserLoginInterface";
+import { UserSignUpInterface } from "src/app/interfaces/UserSignUpInterface";
 import { StorageService } from "../storage/storage.service";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
@@ -67,6 +68,12 @@ export class AuthServices {
     return this.http
       .post(PROPERTIES.BASE_URL + "/signin", body, this.getHeaderOptions())
       .pipe(catchError(this.handleError<any>("login")));
+  }
+
+  signUp(body: UserSignUpInterface): Observable<any> {
+    return this.http
+      .post(PROPERTIES.BASE_URL + "/signup", body, this.getHeaderOptions())
+      .pipe(catchError(this.handleError<any>("signUp")));
   }
 
   refreshToken(): Observable<any> {
