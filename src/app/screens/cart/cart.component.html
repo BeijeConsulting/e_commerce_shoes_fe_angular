@@ -1,4 +1,4 @@
-<app-cart-header></app-cart-header>
+<app-cart-header [couponId]="couponId"></app-cart-header>
 <div class="cart-container">
   <div class="cart-sub-container">
     <div class="products-container">
@@ -11,7 +11,7 @@
       <div class="coupon-code">
         <p>COUPON E CODICE SCONTO</p>
         <mat-form-field class="example-full-width">
-          <input matInput />
+          <input matInput #couponId (input)="getCoupon(couponId.value)" />
         </mat-form-field>
       </div>
     </div>
@@ -19,8 +19,8 @@
       <mat-card class="info-cards order">
         <mat-card-content><h2>RIEPILOGO ORDINE</h2></mat-card-content>
         <div>
-          <p>TOTALE</p>
-          <p>EURO 0.00</p>
+          <p>TOTALE:</p>
+          <p>EURO {{ totalPrice }}</p>
         </div>
         <span class="order-underline"></span>
       </mat-card>

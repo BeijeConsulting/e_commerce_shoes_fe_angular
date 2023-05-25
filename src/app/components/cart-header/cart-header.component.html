@@ -2,11 +2,11 @@
   <div class="cart-header-container">
     <div class="infos">
       <h2>IL TUO CARRELLO</h2>
-      <p>0 PRODOTTI</p>
+      <p>{{ totalProducts }} PRODOTTI</p>
     </div>
     <div class="infos">
       <p>PAGHI SOLO</p>
-      <p>Euro 0.00</p>
+      <p>Euro {{ totalPrice }}</p>
     </div>
     <div class="cart-header-buttons">
       <button class="filter-button" (click)="goToCheckout()">
