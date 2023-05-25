@@ -1,8 +1,8 @@
-<div class="single-product">
+<div class="single-product" *ngIf="product">
   <header>
     <div class="header__container">
-      <p class="header__category">state.product.category</p>
-      <p class="header__price">13 €</p>
+      <p class="header__category">{{ product.category }}</p>
+      <p class="header__price">{{ product.listed_price }} €</p>
       <!-- {state.selectedSize
         ? `${state.product.listed_price}€`
         : `${t("singleProduct.listedPrice")} ${
@@ -10,14 +10,16 @@
           }€`} -->
     </div>
     <h2 class="header__brand">
-      <a onClick="{goToBrandPage}">state.product?.brand</a>
+      <a onClick="{goToBrandPage}">{{ product?.brand }}</a>
     </h2>
-    <p class="header__name">state.product?.name</p>
+    <p class="header__name">{{ product?.name }}</p>
   </header>
 
   <div class="info__container">
     <!-- <SingleProductSlider images="{state.product.images}" /> -->
-    <app-single-product-slider></app-single-product-slider>
+    <app-single-product-slider
+      [images]="productImages"
+    ></app-single-product-slider>
     <!-- <div class="slider">
           <Box sx={{ width: "100%" }}>
             <Skeleton variant="rectangular" height={700} />
@@ -26,22 +28,22 @@
 
     <div class="info">
       <select class="info__select-size" name="sizes">
-        <option selected disabled>Seleziona taglia</option>
-        <option value="none" disabled="true">
-          t("singleProduct.sizeSelect")
+        <option selected disabled>
+          {{ "singleProduct.sizeSelect" | translate }}
         </option>
+
         state.product?.productSizes?.map(renderSizesOption)
       </select>
       <app-info-product-box></app-info-product-box>
 
       <app-button
-        label="t('button.addToCart')"
+        label="{{ 'button.addToCart' | translate }}"
         [buttonStyle]="'default-button'"
       ></app-button>
 
       <div class="info__container">
         <p class="info__wishlist">
-          t("singleProduct.addWishList")
+          {{ "singleProduct.addWishList" | translate }}
           <span> ❤ </span>
         </p>
       </div>
@@ -52,7 +54,7 @@
       /> -->
       <app-accordion-item
         title="Descrizione"
-        description="Descrizione di prova"
+        description="{{ product?.description }}"
       ></app-accordion-item>
     </div>
   </div>

@@ -30,7 +30,7 @@ export class ProductsService {
     page?: number,
     lang?: string,
     filter?: string,
-    perPage = 12
+    perPage?: number,
   ): Observable<any> {
     return this.http
       .get(
@@ -45,11 +45,12 @@ export class ProductsService {
     page?: number,
     lang?: string,
     filter?: string,
-    perPage = 12
+    perPage?: number,
   ): Observable<any> {
     return this.http
       .get(
-        PROPERTIES.BASE_URL + "/products/new/page=1/perPage=10/it",
+        PROPERTIES.BASE_URL +
+          `/products/new/page=${page}/perPage=${perPage}/${lang}${filter}`,
         this.httpOptions
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
@@ -87,6 +88,13 @@ export class ProductsService {
       .get(PROPERTIES.BASE_URL + `/categories/${lang}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
+
+  getCategory(lang: string, code: string): Observable<any> {
+    return this.http
+      .get(PROPERTIES.BASE_URL + `/categories/${code}/${lang}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>("getProducts")));
+  }
+
   getColors(lang?: string): Observable<any> {
     return this.http
       .get(PROPERTIES.BASE_URL + `/colors/${lang}`, this.httpOptions)

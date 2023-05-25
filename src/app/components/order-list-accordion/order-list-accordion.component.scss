@@ -1,6 +1,17 @@
 @import "../../../style/common/variables.scss";
 @import "../../../style/common/mixin.scss";
 
+.panel-header {
+  height: 220px;
+}
+
+.accordion__summary--wrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
 .container__accordion {
   display: flex;
   flex-direction: column;
@@ -14,6 +25,7 @@
 
     &__info {
       display: flex;
+      align-items: center;
       padding: 10px;
       width: 100%;
 
@@ -82,6 +94,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+  }
+
   .container__accordion {
     .accordion {
       &__info {
@@ -98,6 +117,7 @@
     .accordion__summary--wrapper {
       display: flex;
       flex-direction: row;
+      padding: 0 4rem;
       width: 100%;
     }
 
@@ -129,7 +149,7 @@
 
     .accordion__info {
       flex-direction: column;
-      justify-content: center;
+      // justify-content: center;
     }
 
     .accordion__details--price {

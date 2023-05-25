@@ -63,6 +63,10 @@ import { WishlistProductCardComponent } from "./components/wishlist-product-card
 import { OrderListComponent } from "./screens/order-list/order-list.component";
 import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 import { GlobalStateService } from "./services/global-state.service";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
+// Interceptors
+import { interceptorProvider } from "./interceptor";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -119,6 +123,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
+      defaultLanguage: "it",
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
@@ -141,8 +146,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatPaginatorModule,
     MatExpansionModule,
     MatCardModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [MatFormFieldModule, MatMenuTrigger, GlobalStateService],
+  providers: [
+    interceptorProvider,
+    MatFormFieldModule,
+    MatMenuTrigger,
+    GlobalStateService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

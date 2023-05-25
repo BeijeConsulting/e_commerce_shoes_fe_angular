@@ -10,9 +10,12 @@ export class AddressListComponent implements OnInit {
   constructor(private addressesService: AddressesService) {}
 
   ngOnInit(): void {
+    console.log("NGONINIT ADDRESS LIST");
     const addresses = this.addressesService.getAddressList();
+    console.log("ADDRESSES!", addresses);
+
     addresses.subscribe((data) => {
-      console.log("ADDRESSES", data);
+      console.log("DATA!", data);
       this.addresses = data;
     });
   }

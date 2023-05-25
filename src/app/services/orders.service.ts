@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AuthServices } from "./auth/auth.service";
 import { PROPERTIES } from "src/assets/utils/properties";
 
 @Injectable({
@@ -23,7 +24,7 @@ export class OrdersService {
     // accept: "application/json",
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthServices) {}
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -40,7 +41,10 @@ export class OrdersService {
 
   getOrderList(): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + "/orders/order_list", this.authHttpOptions)
+      .get(
+        PROPERTIES.BASE_URL + "/orders/order_list",
+        this.authService.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("getOrderList")));
   }
 

@@ -1,22 +1,25 @@
 <div class="products-list">
-    <h1>Titolo dinamico scarpe</h1>
+    <h1 *ngIf="type==='w'">{{"productsList.womanShoes" | translate}}: {{currentCategory}}</h1>
+    <h1 *ngIf="type==='m'">{{"productsList.manShoes" | translate}}: {{currentCategory}}</h1>
     <div class="select-container">
-        <app-select label="{{ 'header.organize' | translate }}" [selectStyle]="'category-select'"
-            [content]="options1"></app-select>
+        <app-select label='header.organize' [selectStyle]="'category-select'" [content]="options1"
+            (optionSelected)="onNewFilterApplied($event)"></app-select>
 
         <mat-form-field>
             <mat-label class="category-select">{{ 'header.price' | translate }}</mat-label>
             <mat-select>
                 <mat-option>
                     <div>
-                        <app-slider></app-slider>
+                        <app-slider (priceRangeChanged)="onPriceFilterApplied($event)"></app-slider>
                     </div>
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <app-select label='header.brands' [selectStyle]="'category-select'" [content]="options3"></app-select>
-        <app-select label='header.color' [selectStyle]="'category-select'" [content]="options4"></app-select>
+        <app-select label='header.brands' [selectStyle]="'category-select'" [content]="brandsNames"
+            (optionSelected)="onBrandFilterApplied($event)"></app-select>
+        <app-select label='header.color' [selectStyle]="'category-select'" [content]="colors"
+            (optionSelected)="onColorFilterApplied($event)"></app-select>
     </div>
     <!-- <div class="card-container"> -->
     <div class="product-card-container" *ngIf="isDataReady">
@@ -24,18 +27,11 @@
             [routerLink]="getProductLink(product.id)"></app-product-card>
     </div>
     <!-- </div> -->
-    <h2 class="products-list__no-products">{{ "productsList.noProducts" | translate }}</h2>
-    <app-paginator></app-paginator>
+    <h2 class="products-list__no-products" *ngIf="productsCategory.length === 0">{{ "productsList.noProducts" |
+        translate }}</h2>
+    <!-- <app-paginator (pageSelected)="onPageSelected($event)"
+        (pageSizeSelected)="onPaginationModified($event)"></app-paginator> -->
+    <app-paginator (paginationModified)="onPaginationModified($event)"></app-paginator>
+
+
 </div>
-
-
-<!-- <div class="products-list">
-    <h1>Titolo dinamico scarpe</h1>
-    <div class="select-container">
-        <app-select label=" {{ 'header.organize' | translate }}" [selectStyle]="'category-select'"></app-select>
-        <app-select label=" {{ 'header.price' | translate }}"></app-select>
-        <app-select label=" {{ 'header.brands' | translate }}"></app-select>
-        <app-select label=" {{ 'header.color' | translate }}"></app-select>
-    </div>
-    <h2 class="products-list__no-products">{{ "productsList.noProducts" | translate }}</h2>
-</div> -->

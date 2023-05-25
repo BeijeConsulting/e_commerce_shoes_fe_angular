@@ -12,4 +12,5 @@ SwiperCore.use([Pagination, Thumbs]);
 })
 export class SingleProductSliderComponent {
   thumbsSwiper: any;
+  @Input() images: any;
 }
