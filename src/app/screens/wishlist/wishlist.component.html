@@ -1,4 +1,7 @@
-<div class="wishlist">
+<div *ngIf="isLoading" class="spinner">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!isLoading" class="wishlist">
   <h1>{{ "wishList.title" | translate }}</h1>
 
   <div class="wishlist__container">

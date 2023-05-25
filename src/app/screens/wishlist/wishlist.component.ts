@@ -8,6 +8,7 @@ import { WhishlistService } from "src/app/services/wishlist.service";
   styleUrls: ["./wishlist.component.scss"],
 })
 export class WishlistComponent implements OnInit {
+  isLoading = true;
   wishlist: any;
   constructor(private wishlistService: WhishlistService) {}
 
@@ -20,6 +21,7 @@ export class WishlistComponent implements OnInit {
     wishlist.subscribe((data) => {
       console.log("WISHLIST", data.items);
       this.wishlist = data.items;
+      this.isLoading = false;
     });
   }
 }
