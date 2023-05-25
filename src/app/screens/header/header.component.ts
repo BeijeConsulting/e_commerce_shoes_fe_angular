@@ -53,4 +53,10 @@ export class HeaderComponent implements OnInit {
   goToCart() {
     this.router.navigate(["cart"]);
   }
+
+  updateCategory(category: string): void {
+    // this.translateService.use(newLang);
+    this.globalStateService.setCategory(category);
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH")
+  }
 }

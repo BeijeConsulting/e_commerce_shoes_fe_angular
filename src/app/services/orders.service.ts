@@ -18,8 +18,10 @@ export class OrdersService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDc2NDE2NywiZXhwIjoxNjg0NzY3NzY3fQ.lFbi_5sZaGbABVn_62JDfOq0BXS64C6WLgG-AXWnN5c",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTAxOTg4MCwiZXhwIjoxNjg1MDIzNDgwfQ.vfFHyBbusYEObn1i95FPRhsxpW8XZjwmVZ3r5zkI00M",
     }),
+    responseType: "text" as const,
+    // accept: "application/json",
   };
 
   constructor(private http: HttpClient, private authService: AuthServices) {}

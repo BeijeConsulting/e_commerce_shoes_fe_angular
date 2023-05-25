@@ -17,7 +17,7 @@ export class CartService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NDgyNzQ4NSwiZXhwIjoxNjg0ODMxMDg1fQ.MAgggChO0pb9IuUmmAbl2jVFwhGFqDaAwFi5iPS7Y78",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTAxOTg4MCwiZXhwIjoxNjg1MDIzNDgwfQ.vfFHyBbusYEObn1i95FPRhsxpW8XZjwmVZ3r5zkI00M",
     }),
   };
   constructor(private http: HttpClient) {}
@@ -78,12 +78,13 @@ export class CartService {
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
-  deleteCartItem(id?: number): Observable<any> {
+  deleteCartItem(id: number): Observable<any> {
+    console.log("ENTRO NELLA DELETE");
     return this.http
       .delete(
-        PROPERTIES.BASE_URL + `/shoppingcart/delete, ${id}`,
+        PROPERTIES.BASE_URL + `/shoppingcart/delete/${id}`,
         this.authHttpOptions
       )
-      .pipe(catchError(this.handleError<any>("getProducts")));
+      .pipe(catchError(this.handleError<any>("deleteCartItem")));
   }
 }

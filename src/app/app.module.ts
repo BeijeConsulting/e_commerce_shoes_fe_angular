@@ -123,6 +123,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
+      defaultLanguage: "it",
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
