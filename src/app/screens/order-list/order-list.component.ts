@@ -8,6 +8,7 @@ import { OrdersService } from "src/app/services/orders.service";
   styleUrls: ["./order-list.component.scss"],
 })
 export class OrderListComponent implements OnInit {
+  isLoading = true;
   orders: any[] = [];
   user: any;
   constructor(
@@ -19,6 +20,7 @@ export class OrderListComponent implements OnInit {
     const orders = this.ordersService.getOrderList();
     orders.subscribe((data) => {
       this.orders = data.orders;
+      this.isLoading = false;
       console.log("ORDERS", this.orders);
     });
 
