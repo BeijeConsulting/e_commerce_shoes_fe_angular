@@ -30,7 +30,7 @@ export class InterceptorProvider implements HttpInterceptor {
   constructor(
     private storageService: StorageService,
     private authService: AuthServices
-  ) {} // private orderService: OrderService // private authService: AuthService, // private storageService: StorageService,
+  ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
     if (request.headers.get("Authorization")) {
@@ -39,18 +39,10 @@ export class InterceptorProvider implements HttpInterceptor {
       return next.handle(request).pipe(
         catchError((err) => {
           console.log("error interceptor", err);
-          if (err.text === "coupon added.") {
-            return of("Success");
-          }
-          if (err.error.text === "deleted") {
-            // console.log('trovato deleted');
-            // return this.orderService.getOrdersPerPage(1, 5);
-          }
           if (err instanceof HttpErrorResponse && err.status === 401) {
             console.log("401 entrato");
             return this.handle401Error(request, next);
           } else {
-            // console.log('error', err.error.text);
             return throwError(() => new Error(err));
           }
         })
@@ -75,6 +67,10 @@ export class InterceptorProvider implements HttpInterceptor {
       this.isRefreshing = true;
 
       return this.authService.refreshToken().pipe(
+        catchError((err) => {
+          console.log("CATCH ERROR REFRESH TOKEN");
+          return this.authService.logout();
+        }),
         switchMap((res) => {
           console.log("nuovo refresh token");
           this.isRefreshing = false;
