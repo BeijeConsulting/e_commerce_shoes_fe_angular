@@ -145,6 +145,13 @@
               </p>
             </mat-expansion-panel>
           </mat-accordion>
+          <div class="login-signup-container">
+            <button class="add-button" routerLink="/accedi" (click)="sidenav.toggle(); toggleSideNav();">
+              {{"mobileMenu.signupOrSignin" | translate | uppercase}}
+            </button>
+            <!-- <a routerLink="/brand" routerLink="/accedi"
+              (click)="sidenav.toggle(); toggleSideNav();">{{"mobileMenu.signup" | translate | uppercase}}</a> -->
+          </div>
         </div>
       </mat-nav-list>
     </mat-sidenav>
