@@ -54,8 +54,8 @@ export class SearchComponent implements OnInit {
     //API for the products searched
     const productsCategory = this.productsService.getSearchProduct(
       this.page,
-      `${this.currentLanguage}`,
-      `${this.wordSearched}`,
+      this.currentLanguage,
+      this.wordSearched,
       this.perPage
     );
 
@@ -75,14 +75,13 @@ export class SearchComponent implements OnInit {
     this.page = event.pageIndex + 1;
     console.log('Selected page size:', event.pageSize);
     console.log('Current page index:', event.pageIndex);
-    const productsCategory = this.productsService.getSearchProduct(this.page, `${this.currentLanguage}`,  `${this.wordSearched}`, this.perPage);
+    const productsCategory = this.productsService.getSearchProduct(this.page, this.currentLanguage, this.wordSearched, this.perPage);
 
     productsCategory.subscribe((data) => {
       this.productsCategory = data.products;
       this.isDataReady = true;
       console.log("Prodotti :", this.productsCategory);
     });
-    // Perform any desired actions with the selected page size and page index
   } 
 
 }

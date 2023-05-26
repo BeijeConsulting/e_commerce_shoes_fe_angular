@@ -12,6 +12,9 @@ import { formatCategoryCode } from "src/assets/utils/utils";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  
+  title: string = "Accordion Title";
+  description: string = "Accordion Description";
   isVisible: boolean = false;
   inputFocused: boolean = false;
   categories: Observable<any>;
