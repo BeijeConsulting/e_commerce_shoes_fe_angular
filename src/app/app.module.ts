@@ -71,6 +71,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { interceptorProvider } from "./interceptor";
 import { AddressDialogComponent } from "./components/address-dialog/address-dialog.component";
 import { AddressFormComponent } from "./components/address-form/address-form.component";
+import { SearchComponent } from "./screens/search/search.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -114,6 +115,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WishlistProductCardComponent,
     OrderListComponent,
     OrderListAccordionComponent,
+    SearchComponent,
     AddressDialogComponent,
     AddressFormComponent,
     // MatSelectModule

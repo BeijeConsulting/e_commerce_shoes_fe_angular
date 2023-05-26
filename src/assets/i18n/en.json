@@ -130,7 +130,8 @@
   "mobileMenu": {
     "profile": "go to profile",
     "signin": "login",
-    "signup": "Don't have an account? REGISTER HERE"
+    "signup": "Don't have an account? REGISTER HERE",
+    "signupOrSignin": "Login or Sign up"
   },
   "userMenuNav": {
     "profile": "Profile",
