@@ -64,9 +64,13 @@ import { OrderListComponent } from "./screens/order-list/order-list.component";
 import { OrderListAccordionComponent } from "./components/order-list-accordion/order-list-accordion.component";
 import { GlobalStateService } from "./services/global-state.service";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
 
 // Interceptors
 import { interceptorProvider } from "./interceptor";
+import { AddressDialogComponent } from "./components/address-dialog/address-dialog.component";
+import { AddressFormComponent } from "./components/address-form/address-form.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -110,6 +114,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WishlistProductCardComponent,
     OrderListComponent,
     OrderListAccordionComponent,
+    AddressDialogComponent,
+    AddressFormComponent,
     // MatSelectModule
   ],
   imports: [
@@ -147,6 +153,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers: [
     interceptorProvider,
