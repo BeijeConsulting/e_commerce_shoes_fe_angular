@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AddressesService } from "src/app/services/addresses.service";
+import { AddressesService } from "src/app/services/address/addresses.service";
 import { CartService } from "src/app/services/cart.service";
 import { OrdersService } from "src/app/services/orders.service";
 import { Router, ActivatedRoute } from "@angular/router";
