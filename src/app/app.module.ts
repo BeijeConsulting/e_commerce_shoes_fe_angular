@@ -67,6 +67,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 // Interceptors
 import { interceptorProvider } from "./interceptor";
+import { SearchComponent } from './screens/search/search.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "../assets/i18n/", ".json");
@@ -110,6 +111,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WishlistProductCardComponent,
     OrderListComponent,
     OrderListAccordionComponent,
+    SearchComponent,
     // MatSelectModule
   ],
   imports: [
