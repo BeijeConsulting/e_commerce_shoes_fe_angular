@@ -16,34 +16,36 @@
       <div class="__container">
         <h2></h2>
         <ul>
-          <li class="__delivery-address">
-            <label htmlFor="delivery-address-1">
+          <li class="__delivery-address" *ngFor="let address of addresses">
+            <label>
               <address>
-                <p>
-                  <strong class="__name">casa</strong>
-                  <br />
-                </p>
-                <p>Nome Cognome</p>
-                <p>Italia</p>
-                <p>00402 - Roma</p>
-                <p>Via quella bella, 45</p>
-                <p>Lasciare al portiere</p>
+                <p>{{ address.name_surname }}</p>
+                <p>{{ address.street_address }}</p>
+                <p>{{ address.country }}</p>
+                <p>{{ address.telephone }}</p>
               </address>
             </label>
             <input
               type="radio"
               name="delivery-address"
-              id="delivery-address-1"
+              (click)="logValue(address.id)"
             />
           </li>
         </ul>
         <a>ADD A NEW ADDRESS</a>
       </div>
       <div class="__container">
-        <h2></h2>
+        <h2 *ngIf="paymentSelected">SELECT A PAYMENT METHOD</h2>
         <ul>
           <li class="__payment-method">
-            <input type="radio" name="payment-methods" id="payment-methods-1" />
+            <input
+              #mastercard
+              type="radio"
+              name="payment-methods"
+              id="payment-methods-1"
+              value="mastercard"
+              (click)="paymentMethod(mastercard.value)"
+            />
             <label htmlFor="payment-methods-1">
               <img
                 src="../../../assets/images/checkout/mastercard.png"
@@ -53,14 +55,28 @@
             </label>
           </li>
           <li class="__payment-method">
-            <input type="radio" name="payment-methods" id="payment-methods-2" />
+            <input
+              type="radio"
+              name="payment-methods"
+              id="payment-methods-2"
+              #paypal
+              value="paypal"
+              (click)="paymentMethod(paypal.value)"
+            />
             <label htmlFor="payment-methods-2">
               <img src="../../../assets/images/checkout/paypal.png" alt="" />
               <p>PayPal</p>
             </label>
           </li>
           <li class="__payment-method">
-            <input type="radio" name="payment-methods" id="payment-methods-3" />
+            <input
+              type="radio"
+              name="payment-methods"
+              id="payment-methods-3"
+              #klarna
+              value="klarna"
+              (click)="paymentMethod(klarna.value)"
+            />
             <label htmlFor="payment-methods-3">
               <img
                 src="../../../assets/images/checkout/klarnainstalments.png"
@@ -71,35 +87,36 @@
           </li>
         </ul>
       </div>
-      <app-button [buttonStyle]="'filter-button'" label="BUY NOW"></app-button>
+      <app-button
+        [buttonStyle]="'filter-button'"
+        label="BUY NOW"
+        (click)="handleClick()"
+      ></app-button>
     </div>
     <div class="__right">
       <div class="__container">
-        <article class="checkout-product">
+        <article class="checkout-product" *ngFor="let product of products">
           <div class="__image">
-            <img
-              src="../../../assets/images/desktop/sneakers-desktop.jpeg"
-              alt=""
-            />
+            <img src="{{ product.image }}" alt="" />
           </div>
           <div class="__info">
-            <div class="__price">PRODUCT PRICE€</div>
-            <div class="__name">PRODUCT NAME</div>
+            <div class="__price">
+              PRICE: {{ product.sellingItemTotalPrice }}
+            </div>
+            <div class="__name">NAME: {{ product.name }}</div>
             <div class="__color-size">
-              <div>PRODUCT COLOR</div>
-              <div>PRODUCT SIZE</div>
+              <div>SIZE: {{ product.size }}</div>
             </div>
             <div>
               QUANTITY
-              <span class="__quantity">PRODUCT QUANTITY</span>
+              <span class="__quantity">{{ product.quantity }}</span>
             </div>
           </div>
         </article>
         <div class="recap-container">
-          <h2 class="recap-container__header">RECAP</h2>
           <div class="recap-container__total">
-            <span>RECAP TOTAL</span>
-            <span class="price">PRICE</span>
+            <h2>RECAP TOTAL</h2>
+            <span class="price">EURO: {{ totalPrice }}</span>
             <span class="underline"></span>
           </div>
         </div>

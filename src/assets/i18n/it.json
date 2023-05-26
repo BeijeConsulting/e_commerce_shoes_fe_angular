@@ -257,7 +257,8 @@
     "email": "E-MAIL",
     "password": "PASSWORD",
     "signup": "REGISTRATI",
-    "signin": "ACCEDI"
+    "signin": "ACCEDI",
+    "telephone": "TELEFONO"
   },
   "recapCart": {
     "h2": "Riepilogo ordine",

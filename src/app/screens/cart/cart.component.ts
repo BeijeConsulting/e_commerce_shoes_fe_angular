@@ -16,6 +16,8 @@ export class CartComponent implements OnInit {
   ) {}
 
   products: any;
+  totalPrice: any;
+  couponId?: any;
 
   ngOnInit(): void {
     // const products = this.ordersService.getOrderList();
@@ -25,8 +27,20 @@ export class CartComponent implements OnInit {
     const products = this.cartService.getCartList();
     products.subscribe((data) => {
       this.products = data.items;
-      console.log(data.items);
+      const money = data.items.map((el: any) => {
+        return el.sellingItemTotalPrice;
+      });
+
+      this.totalPrice = money.reduce(
+        (accumulator: number, currentValue: number) => {
+          return accumulator + currentValue;
+        },
+        0
+      );
+
+      console.log(this.totalPrice);
     });
+
     // const products = this.productsService.getProducts(
     //   1,
     //   "it",
@@ -42,5 +56,9 @@ export class CartComponent implements OnInit {
     //   this.products = data;
     //   console.log("PRODUCT BY ID", data);
     // });
+  }
+  getCoupon(id: any) {
+    this.couponId = id;
+    console.log(this.couponId);
   }
 }

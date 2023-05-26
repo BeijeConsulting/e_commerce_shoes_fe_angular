@@ -69,7 +69,10 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/ricerca'], { queryParams: { q: encodedQuery } });
     }
   }
-  
+
+  goToOrders() {
+    this.router.navigate(["area-personale/lista-ordini"]);
+  }  
   
 }
 
