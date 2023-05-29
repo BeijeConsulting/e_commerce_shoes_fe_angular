@@ -21,7 +21,7 @@
         <mat-card-content><h2>RIEPILOGO ORDINE</h2></mat-card-content>
         <div>
           <p>TOTALE:</p>
-          <p>EURO {{ totalPrice }}</p>
+          <p>{{ totalPrice | currency : "EUR" }}</p>
         </div>
         <span class="order-underline"></span>
       </mat-card>

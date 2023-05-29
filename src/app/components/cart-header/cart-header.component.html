@@ -6,7 +6,7 @@
     </div>
     <div class="infos">
       <p>PAGHI SOLO</p>
-      <p>Euro {{ totalPrice }}</p>
+      <p>Euro {{ totalPrice | currency : "EUR" }}</p>
     </div>
     <div class="cart-header-buttons">
       <button class="filter-button" (click)="goToCheckout()">

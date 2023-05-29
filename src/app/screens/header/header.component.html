@@ -95,7 +95,7 @@
 
       <div>
         <button class="cart-icon" [matMenuTriggerFor]="cartMenu"></button>
-        <mat-menu #cartMenu="matMenu">
+        <mat-menu #cartMenu="matMenu" class="mat-menu">
           <h2>Carrello:</h2>
           <div class="__container">
             <article class="checkout-product" *ngFor="let product of products">
@@ -104,7 +104,7 @@
               </div>
               <div class="__info">
                 <div class="__price">
-                  PRICE: {{ product.sellingItemTotalPrice }}
+                  PRICE: {{ product.sellingItemTotalPrice | currency : "EUR" }}
                 </div>
                 <div class="__name">NAME: {{ product.name }}</div>
                 <div class="__color-size">
@@ -117,7 +117,7 @@
               </div>
             </article>
           </div>
-          <h3>Totale: {{ cartTotal }}</h3>
+          <h3>Totale: {{ cartTotal | currency : "EUR" }}</h3>
           <nav>
             <app-button
               (click)="goToCart()"
