@@ -12,7 +12,9 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthServices {
-  isLogged: boolean = false;
+  // isLogged: boolean = false;
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   token: BehaviorSubject<string> = new BehaviorSubject<string>(
     this.storageService.getStorage("token")
   );
@@ -37,8 +39,7 @@ export class AuthServices {
 
   getHeaderOptions(isAuth: boolean = false): { headers: HttpHeaders } {
     if (isAuth) {
-      console.log("token", this.token);
-      console.log("token.value:", this.token.value);
+      // console.log("token.value:", this.token.value);
       return {
         headers: new HttpHeaders({
           "Content-Type": "application/json",
@@ -75,7 +76,8 @@ export class AuthServices {
       .pipe(
         tap((res: any) => {
           console.log("tap", res);
-          this.isLogged = true;
+          // this.isLogged = true;
+          this.isLogged.next(true);
 
           this.storageService.setStorage<string>("token", res.token);
           this.storageService.setStorage<string>(
@@ -116,7 +118,7 @@ export class AuthServices {
     if (refreshToken) {
       return this.http
         .post<any>(
-          `${PROPERTIES.BASE_URL}/sign_out`,
+          PROPERTIES.BASE_URL + "/sign_out",
           {
             refreshToken: refreshToken,
           },
@@ -124,12 +126,15 @@ export class AuthServices {
         )
         .pipe(
           finalize(() => {
+            console.log("finalizing logout");
             const currentLang: string =
               this.storageService.getStorage("language");
             this.storageService.clear();
             this.storageService.setStorage<string>("language", currentLang);
             this.token.next("");
-            this.router.navigate(["login"]);
+            // this.isLogged = false;
+            this.isLogged.next(false);
+            this.router.navigate(["accedi"]);
           })
         );
     }
