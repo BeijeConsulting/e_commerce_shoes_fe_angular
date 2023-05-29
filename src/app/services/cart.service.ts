@@ -4,7 +4,6 @@ import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { AuthServices } from "./auth/auth.service";
 import { PROPERTIES } from "src/assets/utils/properties";
-import { AuthServices } from "./auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -41,7 +40,7 @@ export class CartService {
     return this.http
       .get(
         PROPERTIES.BASE_URL + "/shoppingcart",
-        this.authService.getHeaderOptions(true)
+        this.authServices.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
@@ -89,7 +88,7 @@ export class CartService {
     return this.http
       .delete(
         PROPERTIES.BASE_URL + `/shoppingcart/delete/${id}`,
-        this.authService.getHeaderOptions(true)
+        this.authServices.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("deleteCartItem")));
   }
