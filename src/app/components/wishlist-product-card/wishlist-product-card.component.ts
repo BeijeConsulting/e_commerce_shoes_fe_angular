@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { WhishlistService } from "src/app/services/wishlist.service";
 
@@ -9,6 +9,7 @@ import { WhishlistService } from "src/app/services/wishlist.service";
 })
 export class WishlistProductCardComponent {
   @Input() product: any;
+  @Output() myEvent = new EventEmitter<any>();
 
   constructor(
     private router: Router,
@@ -19,8 +20,15 @@ export class WishlistProductCardComponent {
     this.router.navigate([`scarpa/${this.product.id}`]);
   }
 
-  deleteItemFromWishlist(id: number, e: any) {
+  deleteItemFromWishlist(id: number, e: any): void {
     e.stopPropagation();
-    this.wishListService.deleteWishList(id).subscribe();
+    this.wishListService.deleteWishList(id).subscribe({
+      next: () => {
+        this.myEvent.emit("DeleteFromWishlist");
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
+import { Component, OnInit } from "@angular/core";
 
 import { WhishlistService } from "src/app/services/wishlist.service";
 @Component({
@@ -10,10 +9,7 @@ import { WhishlistService } from "src/app/services/wishlist.service";
 export class WishlistComponent implements OnInit {
   isLoading = true;
   wishlist: any;
-  constructor(
-    private wishlistService: WhishlistService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(private wishlistService: WhishlistService) {}
 
   ngOnInit(): void {
     this.getWishlist();
@@ -25,7 +21,10 @@ export class WishlistComponent implements OnInit {
       console.log("WISHLIST", data.items);
       this.wishlist = data.items;
       this.isLoading = false;
-      this.cdr.detectChanges();
     });
+  }
+
+  deleteFromWishlist() {
+    this.getWishlist();
   }
 }

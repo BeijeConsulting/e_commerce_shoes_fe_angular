@@ -6,6 +6,7 @@
 
   <div class="wishlist__container">
     <app-wishlist-product-card
+      (myEvent)="deleteFromWishlist()"
       *ngFor="let product of wishlist"
       [product]="product"
     ></app-wishlist-product-card>

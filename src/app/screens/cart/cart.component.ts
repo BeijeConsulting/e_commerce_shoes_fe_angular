@@ -20,6 +20,14 @@ export class CartComponent implements OnInit {
   couponId?: any;
 
   ngOnInit(): void {
+    this.getAllCartProducts();
+  }
+  getCoupon(id: any) {
+    this.couponId = id;
+    console.log(this.couponId);
+  }
+
+  getAllCartProducts() {
     const products = this.cartService.getCartList();
     products.subscribe((data) => {
       this.products = data.items;
@@ -34,19 +42,16 @@ export class CartComponent implements OnInit {
         },
         0
       );
-
-      console.log(this.totalPrice);
+      console.log("FUNZIONE CHIAMATA");
     });
   }
-  getCoupon(id: any) {
-    this.couponId = id;
-    console.log(this.couponId);
-  }
 
-  addItem(newItem: number) {
+  deleteItem(newItem: number) {
     this.products.forEach((product: any) => {
       if (product.item_id === newItem) {
-        this.cartService.deleteCartItem(product.item_id).subscribe();
+        this.cartService.deleteCartItem(product.item_id).subscribe(() => {
+          this.getAllCartProducts();
+        });
       }
     });
   }

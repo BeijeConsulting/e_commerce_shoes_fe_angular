@@ -164,3 +164,39 @@
 
 @media screen and (max-width: 500px) {
 }
+
+.checkout-product {
+  color: grey;
+  font-size: small;
+
+  .__image {
+    margin-right: 2rem;
+  }
+
+  img {
+    width: 8rem;
+  }
+
+  .__price {
+    font-size: small;
+    margin-bottom: 0.7rem;
+  }
+
+  .__price,
+  .__color-size,
+  .__quantity {
+    font-weight: 700;
+  }
+
+  .__name,
+  .__color-size,
+  .__quantity {
+    margin-bottom: 0.4rem;
+  }
+
+  .__color-size {
+    div:first-child {
+      margin-right: 2rem;
+    }
+  }
+}

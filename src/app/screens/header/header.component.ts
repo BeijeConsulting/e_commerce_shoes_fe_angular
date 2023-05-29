@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { GlobalStateService } from "src/app/services/global-state.service";
 import { TranslateService } from "@ngx-translate/core";
 import { formatCategoryCode } from "src/assets/utils/utils";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
   selector: "app-header",
@@ -12,7 +13,6 @@ import { formatCategoryCode } from "src/assets/utils/utils";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  
   title: string = "Accordion Title";
   description: string = "Accordion Description";
   isVisible: boolean = false;
@@ -20,12 +20,14 @@ export class HeaderComponent implements OnInit {
   categories: Observable<any>;
   currentLanguage: string | undefined;
   searchQuery: string = "";
-
+  cartTotal: any;
+  products: any;
   constructor(
     private productsService: ProductsService,
     private router: Router,
     private globalStateService: GlobalStateService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private cartService: CartService
   ) {
     this.categories = this.productsService.getCategories();
     this.categories.subscribe((data) => {
@@ -35,6 +37,21 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentLanguage = this.translateService.currentLang;
+    const products = this.cartService.getCartList();
+    products.subscribe((data) => {
+      this.products = data.items;
+      console.log(this.products);
+      const money = data.items.map((el: any) => {
+        return el.sellingItemTotalPrice;
+      });
+
+      this.cartTotal = money.reduce(
+        (accumulator: number, currentValue: number) => {
+          return accumulator + currentValue;
+        },
+        0
+      );
+    });
   }
 
   getCategoryLink(categoryCode: string, path: string): string {
@@ -66,17 +83,14 @@ export class HeaderComponent implements OnInit {
   onSearch(query: string): void {
     if (query) {
       const encodedQuery = encodeURIComponent(query);
-      this.router.navigate(['/ricerca'], { queryParams: { q: encodedQuery } });
+      this.router.navigate(["/ricerca"], { queryParams: { q: encodedQuery } });
     }
   }
 
   goToOrders() {
     this.router.navigate(["area-personale/lista-ordini"]);
-  }  
-  
+  }
 }
-
-
 
 // import { Component, OnInit } from "@angular/core";
 // import { ProductsService } from "src/app/services/products.service";
@@ -97,9 +111,9 @@ export class HeaderComponent implements OnInit {
 //   categories: Observable<any>;
 //   currentLanguage: string | undefined;
 
-//   constructor(private productsService: ProductsService, 
+//   constructor(private productsService: ProductsService,
 //     private router: Router,
-//     private globalStateService: GlobalStateService, 
+//     private globalStateService: GlobalStateService,
 //     private translateService : TranslateService) {
 //     this.categories = this.productsService.getCategories();
 //     this.categories.subscribe((data) => {

@@ -4,7 +4,7 @@
     <div class="products-container">
       <div class="product-card">
         <app-order-card
-          (newItemEvent)="addItem($event)"
+          (newItemEvent)="deleteItem($event)"
           *ngFor="let product of products"
           [product]="product"
         ></app-order-card>
