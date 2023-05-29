@@ -136,7 +136,8 @@
   "userMenuNav": {
     "profile": "Profile",
     "logIn": "Log In",
-    "orders": "Orders"
+    "orders": "Orders",
+    "logOut": "Log Out"
   },
   "cartNavMenu": {
     "cart": "Cart",
