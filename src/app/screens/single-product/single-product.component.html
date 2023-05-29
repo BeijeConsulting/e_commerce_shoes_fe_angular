@@ -27,18 +27,25 @@
         </div> -->
 
     <div class="info">
-      <select class="info__select-size" name="sizes">
+      <select
+        class="info__select-size"
+        name="sizes"
+        (change)="handleSizeSelect($event)"
+      >
         <option selected disabled>
           {{ "singleProduct.sizeSelect" | translate }}
         </option>
-
-        state.product?.productSizes?.map(renderSizesOption)
+        <option *ngFor="let size of product?.productSizes">
+          {{ size.eu }}
+        </option>
       </select>
+
       <app-info-product-box></app-info-product-box>
 
       <app-button
         label="{{ 'button.addToCart' | translate }}"
         [buttonStyle]="'default-button'"
+        (click)="addToCart()"
       ></app-button>
 
       <div class="info__container">
