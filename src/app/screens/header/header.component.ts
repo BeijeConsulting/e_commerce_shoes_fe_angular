@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 import { ProductsService } from "src/app/services/products.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
@@ -6,6 +6,8 @@ import { GlobalStateService } from "src/app/services/global-state.service";
 import { TranslateService } from "@ngx-translate/core";
 import { formatCategoryCode } from "src/assets/utils/utils";
 import { CartService } from "src/app/services/cart.service";
+import { AuthServices } from "src/app/services/auth/auth.service";
+import { StorageService } from "src/app/services/storage/storage.service";
 
 @Component({
   selector: "app-header",
@@ -13,6 +15,7 @@ import { CartService } from "src/app/services/cart.service";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  isUserLoggedIn: any = this.authService.isLogged;
   title: string = "Accordion Title";
   description: string = "Accordion Description";
   isVisible: boolean = false;
@@ -27,7 +30,9 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private globalStateService: GlobalStateService,
     private translateService: TranslateService,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService: AuthServices,
+    private storageService: StorageService
   ) {
     this.categories = this.productsService.getCategories();
     this.categories.subscribe((data) => {
@@ -36,6 +41,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.isLogged.subscribe((isLogged: boolean) => {
+      this.isUserLoggedIn = isLogged;
+    });
+    this.isUserLoggedIn =
+      this.storageService.getStorage<boolean>("isUserLoggedIn");
+
+    console.log("IS LOGGED", this.isUserLoggedIn);
     this.currentLanguage = this.translateService.currentLang;
     const products = this.cartService.getCartList();
     products.subscribe((data) => {
@@ -52,6 +64,18 @@ export class HeaderComponent implements OnInit {
         0
       );
     });
+  }
+
+  logOut() {
+    console.log("Logging out...");
+    this.authService.logout().subscribe((data) => {
+      console.log("LOGOUT data:", data);
+    });
+    this.authService.isLogged.subscribe((isLogged: boolean) => {
+      this.isUserLoggedIn = isLogged;
+    });
+    // this.storageService.clear();
+    // this.router.navigate(["/accedi"]);
   }
 
   getCategoryLink(categoryCode: string, path: string): string {
