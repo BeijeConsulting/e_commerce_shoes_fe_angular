@@ -132,7 +132,7 @@
           <nav>
             <button mat-menu-item routerLink="/area-personale/">
               <mat-icon>account_circle</mat-icon>
-              Nome dinamico
+              Account
             </button>
             <button mat-menu-item routerLink="/area-personale/lista-desideri">
               <mat-icon>favorite</mat-icon>
@@ -142,9 +142,26 @@
               <mat-icon>shopping_cart</mat-icon>
               {{ "userMenuNav.orders" | translate }}
             </button>
-            <button mat-menu-item routerLink="/accedi">
-              <mat-icon>login</mat-icon>
-              {{ "userMenuNav.logIn" | translate }}
+            <button
+              mat-menu-item
+              routerLink="/accedi"
+              (click)="isUserLoggedIn && logOut()"
+            >
+              <mat-icon>{{ isUserLoggedIn ? "logout" : "login" }}</mat-icon>
+              {{
+                isUserLoggedIn
+                  ? ("userMenuNav.logOut" | translate)
+                  : ("userMenuNav.logIn" | translate)
+              }}
+
+              <!-- <button mat-menu-item (click)="isUserLoggedIn && logOut()">
+                <mat-icon>{{ isUserLoggedIn ? "logout" : "login" }}</mat-icon>
+                {{
+                  isUserLoggedIn
+                    ? ("userMenuNav.logOut" | translate)
+                    : ("userMenuNav.logIn" | translate)
+                }}
+              </button> -->
             </button>
           </nav>
         </mat-menu>
