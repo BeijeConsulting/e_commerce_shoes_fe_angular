@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AuthServices } from "./auth/auth.service";
 import { PROPERTIES } from "src/assets/utils/properties";
 
 @Injectable({
@@ -20,7 +21,7 @@ export class CartService {
         "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTAxOTg4MCwiZXhwIjoxNjg1MDIzNDgwfQ.vfFHyBbusYEObn1i95FPRhsxpW8XZjwmVZ3r5zkI00M",
     }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authServices: AuthServices) {}
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -37,7 +38,10 @@ export class CartService {
 
   getCartList(): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + "/shoppingcart", this.authHttpOptions)
+      .get(
+        PROPERTIES.BASE_URL + "/shoppingcart",
+        this.authServices.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
@@ -53,8 +57,9 @@ export class CartService {
   addItemToCartList(item?: object): Observable<any> {
     return this.http
       .post(
-        PROPERTIES.BASE_URL + `/shoppingcart/add, ${item}`,
-        this.authHttpOptions
+        PROPERTIES.BASE_URL + "/shoppingcart/add",
+        item,
+        this.authServices.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
