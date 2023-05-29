@@ -48,6 +48,12 @@
   &__price {
     display: flex;
     align-items: center;
+    button {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      z-index: 999;
+    }
   }
 
   &__sellingPrice {

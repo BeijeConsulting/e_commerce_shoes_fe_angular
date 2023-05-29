@@ -51,7 +51,12 @@
       <div class="info__container">
         <p class="info__wishlist">
           {{ "singleProduct.addWishList" | translate }}
-          <span> ❤ </span>
+          <span
+            (click)="addToWishlist(product.id)"
+            [ngStyle]="{ color: isInWishlist ? 'red' : 'white' }"
+          >
+            &#10084;
+          </span>
         </p>
       </div>
 

@@ -4,6 +4,7 @@ import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { AuthServices } from "./auth/auth.service";
 import { PROPERTIES } from "src/assets/utils/properties";
+import { AuthServices } from "./auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +19,7 @@ export class CartService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTAxOTg4MCwiZXhwIjoxNjg1MDIzNDgwfQ.vfFHyBbusYEObn1i95FPRhsxpW8XZjwmVZ3r5zkI00M",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTM1NDY2NSwiZXhwIjoxNjg1MzU4MjY1fQ.b_nv5EgW0icGaFZWlPyFklT7YnSchPO1imRDxa5zNeQ",
     }),
   };
   constructor(private http: HttpClient, private authServices: AuthServices) {}
@@ -40,7 +41,7 @@ export class CartService {
     return this.http
       .get(
         PROPERTIES.BASE_URL + "/shoppingcart",
-        this.authServices.getHeaderOptions(true)
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
@@ -88,7 +89,7 @@ export class CartService {
     return this.http
       .delete(
         PROPERTIES.BASE_URL + `/shoppingcart/delete/${id}`,
-        this.authHttpOptions
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("deleteCartItem")));
   }
