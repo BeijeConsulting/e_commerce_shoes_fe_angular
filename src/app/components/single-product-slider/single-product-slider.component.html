@@ -15,20 +15,6 @@
     /></ng-template>
   </swiper>
 
-  <!-- <swiper
-    [onSwiper]="{setThumbsSwiper}"
-    [spaceBetween]="{5}"
-    [slidesPerView]="{props.images.length}"
-    [freeMode]="{true}"
-    [watchSlidesProgress]="{true}"
-    modules="{[FreeMode,"
-    Navigation,
-    Thumbs]}
-    class="mySwiper2"
-  >
-    {props.images.map(mapImages)}
-  </swiper> -->
-
   <swiper
     (swiper)="thumbsSwiper = $event"
     [spaceBetween]="5"

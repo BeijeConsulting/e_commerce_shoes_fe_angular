@@ -2,7 +2,9 @@
   <div class="category-card">
     <div class="category-card-content-wrapper">
       <h2 class="category-card__content-wrapper__header">
-        <a class="category-card__content-wrapper__header__link">UOMO</a>
+        <a class="category-card__content-wrapper__header__link">{{
+          "header.man" | translate | uppercase
+        }}</a>
       </h2>
       <app-button
         [buttonStyle]="'default-button'"
@@ -18,7 +20,9 @@
   <div class="category-card">
     <div class="category-card-content-wrapper">
       <h2 class="category-card__content-wrapper__header">
-        <a class="category-card__content-wrapper__header__link">DONNA</a>
+        <a class="category-card__content-wrapper__header__link">{{
+          "header.woman" | translate | uppercase
+        }}</a>
       </h2>
       <app-button
         [buttonStyle]="'default-button'"
@@ -27,14 +31,14 @@
     </div>
     <img
       class="category-card__image"
-      src="../../../assets/images/homepage-card-category/manTipology.jpeg"
+      src="../../../assets/images/homepage-card-category/woman.jpg"
       alt=""
     />
   </div>
   <div class="category-card">
     <div class="category-card-content-wrapper">
       <h2 class="category-card__content-wrapper__header">
-        <a class="category-card__content-wrapper__header__link">BAMBINO</a>
+        <a class="category-card__content-wrapper__header__link">UNISEX</a>
       </h2>
       <app-button
         [buttonStyle]="'default-button'"
@@ -43,7 +47,7 @@
     </div>
     <img
       class="category-card__image"
-      src="../../../assets/images/homepage-card-category/manTipology.jpeg"
+      src="../../../assets/images/homepage-card-category/unisex.jpg"
       alt=""
     />
   </div>

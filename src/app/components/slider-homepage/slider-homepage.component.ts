@@ -8,7 +8,8 @@ import SwiperCore, {
   A11y,
   Autoplay,
 } from "swiper";
-// install Swiper modules
+import { TranslateService } from "@ngx-translate/core";
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 @Component({
