@@ -59,7 +59,7 @@ export class OrdersService {
       .post(
         PROPERTIES.BASE_URL + "/orders/add_order",
         order,
-        this.authHttpOptions
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("addOrder")));
   }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
+import { AuthServices } from "./auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,10 +18,10 @@ export class CartService {
       "Content-Type": "application/json",
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTAxOTg4MCwiZXhwIjoxNjg1MDIzNDgwfQ.vfFHyBbusYEObn1i95FPRhsxpW8XZjwmVZ3r5zkI00M",
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYW9sbzFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY4NTM1NDY2NSwiZXhwIjoxNjg1MzU4MjY1fQ.b_nv5EgW0icGaFZWlPyFklT7YnSchPO1imRDxa5zNeQ",
     }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthServices) {}
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -37,7 +38,10 @@ export class CartService {
 
   getCartList(): Observable<any> {
     return this.http
-      .get(PROPERTIES.BASE_URL + "/shoppingcart", this.authHttpOptions)
+      .get(
+        PROPERTIES.BASE_URL + "/shoppingcart",
+        this.authService.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("getProducts")));
   }
 
@@ -83,7 +87,7 @@ export class CartService {
     return this.http
       .delete(
         PROPERTIES.BASE_URL + `/shoppingcart/delete/${id}`,
-        this.authHttpOptions
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("deleteCartItem")));
   }

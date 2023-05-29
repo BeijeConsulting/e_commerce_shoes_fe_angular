@@ -92,6 +92,7 @@ export class CheckoutComponent implements OnInit {
       if (data === "add") {
         this.obj.products.forEach((product_id) => {
           this.cartService.deleteCartItem(product_id).subscribe();
+          console.log("deleted item", product_id);
         });
       }
     });

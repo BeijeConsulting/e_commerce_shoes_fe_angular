@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-order-card",
@@ -8,6 +8,15 @@ import { Component, Input, OnInit } from "@angular/core";
 export class OrderCardComponent implements OnInit {
   @Input() product?: any;
   @Input() image?: string;
+  @Output() newItemEvent = new EventEmitter<number>();
 
   ngOnInit(): void {}
+
+  addNewItem(value: number) {
+    this.newItemEvent.emit(value);
+  }
+
+  selectValue(value: any) {
+    console.log("SELECT VALUE", value);
+  }
 }

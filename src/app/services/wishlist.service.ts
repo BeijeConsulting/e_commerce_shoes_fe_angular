@@ -47,7 +47,11 @@ export class WhishlistService {
 
   addWishList(obj: any): Observable<any> {
     return this.http
-      .post(PROPERTIES.BASE_URL + "/wishlist/add", obj, this.authHttpOptions)
+      .post(
+        PROPERTIES.BASE_URL + "/wishlist/add",
+        obj,
+        this.authService.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("addWishList")));
   }
 
@@ -55,7 +59,7 @@ export class WhishlistService {
     return this.http
       .delete(
         PROPERTIES.BASE_URL + "/wishlist/delete/" + id,
-        this.authHttpOptions
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("deleteWishList")));
   }

@@ -10,6 +10,9 @@
             <p class="card__sellingPrice">
               {{ product.listedPrice | currency : "EUR" }}
             </p>
+            <button (click)="deleteItemFromWishlist(product.id, $event)">
+              ELIMINA
+            </button>
           </div>
         </div>
       </div>

@@ -11,6 +11,8 @@
   &__info {
     padding: 0 1rem;
     color: darkgrey;
+    display: flex;
+    flex-direction: column;
 
     @media screen and (max-width: 600px) {
       gap: 1rem;
