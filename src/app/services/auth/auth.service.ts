@@ -108,7 +108,10 @@ export class AuthServices {
   }
 
   getUser() {
-    return this.http.get(PROPERTIES.BASE_URL + "/user", this.authHttpOptions);
+    return this.http.get(
+      PROPERTIES.BASE_URL + "/user",
+      this.getHeaderOptions(true)
+    );
   }
 
   logout(): Observable<any> {
