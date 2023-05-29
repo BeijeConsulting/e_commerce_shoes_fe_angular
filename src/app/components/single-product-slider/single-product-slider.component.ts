@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { SwiperComponent } from "swiper/angular";
 import SwiperCore, { Pagination, Thumbs } from "swiper";
+import { TranslateService } from "@ngx-translate/core";
 
 SwiperCore.use([Pagination, Thumbs]);
 
