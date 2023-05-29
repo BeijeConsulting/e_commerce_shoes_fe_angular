@@ -37,12 +37,10 @@ export class WhishlistService {
   }
 
   getWishList(): Observable<any> {
-    return this.http
-      .get(
-        PROPERTIES.BASE_URL + "/wishlist",
-        this.authService.getHeaderOptions(true)
-      )
-      .pipe(catchError(this.handleError<any>("getWishList")));
+    return this.http.get(
+      PROPERTIES.BASE_URL + "/wishlist",
+      this.authService.getHeaderOptions(true)
+    );
   }
 
   addWishList(obj: any): Observable<any> {

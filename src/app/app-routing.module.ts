@@ -16,6 +16,7 @@ import { SingleProductComponent } from "./screens/single-product/single-product.
 import { BrandsComponent } from "./screens/brands/brands.component";
 import { OrderListComponent } from "./screens/order-list/order-list.component";
 import { CheckoutComponent } from "./screens/checkout/checkout.component";
+import { SearchComponent } from "./screens/search/search.component";
 
 const routes: Routes = [
 
@@ -54,6 +55,7 @@ const routes: Routes = [
     ],
   },
   { path: "checkout", component: CheckoutComponent },
+  { path: "ricerca", component: SearchComponent },
 ];
 
 @NgModule({

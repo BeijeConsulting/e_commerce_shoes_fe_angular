@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of, Subject } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
-import { AuthServices } from "./auth/auth.service";
+import { AuthServices } from "../auth/auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -63,19 +63,22 @@ export class AddressesService {
       .pipe(catchError(this.handleError<any>("getAddress")));
   }
 
-  addAddress(address: any): Observable<any> {
+  addAddress(newAddress: any): Observable<any> {
     return this.http
-      .post(
-        PROPERTIES.BASE_URL + "/user/address",
-        address,
-        this.authHttpOptions
+      .post<any>(
+        `${PROPERTIES.BASE_URL}/user/address`,
+        newAddress,
+        this.authService.getHeaderOptions(true)
       )
       .pipe(catchError(this.handleError<any>("addAddress")));
   }
 
   deleteAddress(id: number): Observable<any> {
     return this.http
-      .delete(PROPERTIES.BASE_URL + "/user/address/" + id, this.authHttpOptions)
+      .delete<any>(
+        `${PROPERTIES.BASE_URL}/user/address/${id}`,
+        this.authService.getHeaderOptions(true)
+      )
       .pipe(catchError(this.handleError<any>("deleteAddress")));
   }
 

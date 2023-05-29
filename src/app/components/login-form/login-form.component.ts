@@ -54,7 +54,10 @@ export class LoginFormComponent implements OnInit {
     console.log("Is login valid:", this.loginForm.valid);
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
-        next: (resp) => this.handleResponse(resp),
+        next: (resp) => {
+          console.log("resp login", resp);
+          this.handleResponse(resp);
+        },
         error: (err) => this.handleLoginError(err),
       });
     } else {

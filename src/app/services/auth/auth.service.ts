@@ -4,13 +4,15 @@ import { Observable, of, BehaviorSubject } from "rxjs";
 import { UserLoginInterface } from "../../interfaces/UserLoginInterface";
 import { UserSignUpInterface } from "src/app/interfaces/UserSignUpInterface";
 import { StorageService } from "../storage/storage.service";
-import { catchError } from "rxjs/operators";
+import { catchError, finalize, tap } from "rxjs/operators";
 import { PROPERTIES } from "src/assets/utils/properties";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthServices {
+  isLogged: boolean = false;
   token: BehaviorSubject<string> = new BehaviorSubject<string>(
     this.storageService.getStorage("token")
   );
@@ -29,11 +31,14 @@ export class AuthServices {
 
   constructor(
     private http: HttpClient,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {}
 
   getHeaderOptions(isAuth: boolean = false): { headers: HttpHeaders } {
     if (isAuth) {
+      console.log("token", this.token);
+      console.log("token.value:", this.token.value);
       return {
         headers: new HttpHeaders({
           "Content-Type": "application/json",
@@ -67,7 +72,19 @@ export class AuthServices {
   login(body: UserLoginInterface): Observable<any> {
     return this.http
       .post(PROPERTIES.BASE_URL + "/signin", body, this.getHeaderOptions())
-      .pipe(catchError(this.handleError<any>("login")));
+      .pipe(
+        tap((res: any) => {
+          console.log("tap", res);
+          this.isLogged = true;
+
+          this.storageService.setStorage<string>("token", res.token);
+          this.storageService.setStorage<string>(
+            "refreshToken",
+            res.refreshToken
+          );
+          this.token.next(res.token);
+        })
+      );
   }
 
   signUp(body: UserSignUpInterface): Observable<any> {
@@ -90,5 +107,38 @@ export class AuthServices {
 
   getUser() {
     return this.http.get(PROPERTIES.BASE_URL + "/user", this.authHttpOptions);
+  }
+
+  logout(): Observable<any> {
+    const refreshToken: string | null | undefined =
+      this.storageService.getStorage("refreshToken");
+
+    if (refreshToken) {
+      return this.http
+        .post<any>(
+          `${PROPERTIES.BASE_URL}/sign_out`,
+          {
+            refreshToken: refreshToken,
+          },
+          this.getHeaderOptions(true)
+        )
+        .pipe(
+          finalize(() => {
+            const currentLang: string =
+              this.storageService.getStorage("language");
+            this.storageService.clear();
+            this.storageService.setStorage<string>("language", currentLang);
+            this.token.next("");
+            this.router.navigate(["login"]);
+          })
+        );
+    }
+
+    return of("LOGGED OUT").pipe(
+      finalize(() => {
+        this.storageService.clear();
+        this.token.next("");
+      })
+    );
   }
 }

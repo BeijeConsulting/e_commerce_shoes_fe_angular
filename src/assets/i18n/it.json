@@ -108,7 +108,8 @@
   "mobileMenu": {
     "profile": "vai al profilo",
     "login": "accedi",
-    "signup": "Non hai un account? REGISTRATI QUI"
+    "signup": "Non hai un account? REGISTRATI QUI",
+    "signupOrSignin": "Accedi o registrati"
   },
   "singleProduct": {
     "listedPrice": "Prezzo di Listino",
