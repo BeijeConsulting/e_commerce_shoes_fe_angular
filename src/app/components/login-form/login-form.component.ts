@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthServices } from "src/app/services/auth/auth.service";
 import { LoginResponse } from "src/app/interfaces/LoginResponseInterface";
 import { StorageService } from "src/app/services/storage/storage.service";
+import { Router } from "@angular/router";
 import {
   FormGroup,
   FormControl,
@@ -29,7 +30,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private formBuilder: FormBuilder,
-    private authService: AuthServices
+    private authService: AuthServices,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class LoginFormComponent implements OnInit {
     console.log("loggato con successo");
     this.storageService.setStorage<string>("token", resp.token);
     this.storageService.setStorage<string>("refreshToken", resp.refreshToken);
+    this.router.navigate(["/"]);
   }
 
   handleLoginError(err: any): void {
@@ -53,6 +56,7 @@ export class LoginFormComponent implements OnInit {
     // Perform form submission logic here
     console.log("Is login valid:", this.loginForm.valid);
     if (this.loginForm.valid) {
+      this.storageService.setStorage<boolean>("isUserLoggedIn", true);
       this.authService.login(this.loginForm.value).subscribe({
         next: (resp) => {
           console.log("resp login", resp);
