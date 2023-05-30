@@ -8,6 +8,7 @@ import {
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import { AuthServices } from "src/app/services/auth/auth.service";
 import { StorageService } from "src/app/services/storage/storage.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signup-form",
@@ -33,7 +34,8 @@ export class SignupFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthServices,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,6 +54,7 @@ export class SignupFormComponent implements OnInit {
     console.log("Registrato con successo");
     this.storageService.setStorage<string>("token", resp.token);
     this.storageService.setStorage<string>("refreshToken", resp.refreshToken);
+    this.router.navigate(["/"]);
   }
 
   handleSignUpError(err: any): void {
